@@ -53,34 +53,173 @@
 <section class="page-hero" style="background-image:url('https://picsum.photos/seed/pk-sponsor-hero/1600/700');">
   <div class="container">
     <div class="breadcrumb"><a href="index.html">Home</a> / Sponsor a Child</div>
-    <h1>Sponsor a Child, Change a Story</h1>
-    <p style="max-width:600px;color:#DCE3EF;">For $38 a month, you can walk alongside a child with education, nourishment, and the love of Christ.</p>
+    <h1>Build Your Sponsorship</h1>
+    <p style="max-width:600px;color:#DCE3EF;">Choose exactly what your monthly gift provides — from pencils to tuition — and watch your impact add up in real time.</p>
   </div>
 </section>
 
-<section class="section section--tight">
+<section class="section" id="builder">
+  <div class="container">
+    <span class="eyebrow">Build Your Sponsorship</span>
+    <h2 style="margin-bottom:8px;">Choose What Your Gift Provides</h2>
+    <p class="lede">Tap items below to add them to your monthly sponsorship, or start from a preset and customize from there. Your total updates instantly — no forms, no waiting.</p>
+
+    <div class="quick-bundles">
+      <button type="button" class="bundle-btn active" data-bundle="starter">🌱 Starter Care · <span class="amt">$18/mo</span></button>
+      <button type="button" class="bundle-btn" data-bundle="full">🌾 Full Support · <span class="amt">$55/mo</span></button>
+      <button type="button" class="bundle-btn" data-bundle="complete">🌳 Complete Sponsorship · <span class="amt">$100/mo</span></button>
+    </div>
+
+    <div class="builder-layout">
+      <div class="item-grid" id="itemGrid">
+        <div class="item-card selected" data-id="supplies" data-price="1" data-name="Pencils &amp; School Supplies">
+          <div class="item-icon"><i class="fa-solid fa-pencil"></i></div>
+          <div class="item-info">
+            <h3>Pencils &amp; School Supplies <span class="item-price">$1/mo</span></h3>
+            <p>Basic supplies so every school day starts ready to learn.</p>
+          </div>
+          <span class="item-toggle">Added ✓</span>
+        </div>
+        <div class="item-card selected" data-id="hygiene" data-price="2" data-name="Hygiene Essentials">
+          <div class="item-icon"><i class="fa-solid fa-soap"></i></div>
+          <div class="item-info">
+            <h3>Hygiene Essentials <span class="item-price">$2/mo</span></h3>
+            <p>Soap, a toothbrush, and basic hygiene supplies for health and dignity.</p>
+          </div>
+          <span class="item-toggle">Added ✓</span>
+        </div>
+        <div class="item-card" data-id="faith" data-price="2" data-name="Bible &amp; Discipleship Materials">
+          <div class="item-icon"><i class="fa-solid fa-cross"></i></div>
+          <div class="item-info">
+            <h3>Bible &amp; Discipleship Materials <span class="item-price">$2/mo</span></h3>
+            <p>A children's Bible and faith-based materials for spiritual growth.</p>
+          </div>
+          <span class="item-toggle">Add</span>
+        </div>
+        <div class="item-card" data-id="reading" data-price="3" data-name="Storybooks &amp; Reading Materials">
+          <div class="item-icon"><i class="fa-solid fa-book"></i></div>
+          <div class="item-info">
+            <h3>Storybooks &amp; Reading Materials <span class="item-price">$3/mo</span></h3>
+            <p>Storybooks that build a lifelong love of reading.</p>
+          </div>
+          <span class="item-toggle">Add</span>
+        </div>
+        <div class="item-card selected" data-id="water" data-price="4" data-name="Clean Water Access">
+          <div class="item-icon"><i class="fa-solid fa-droplet"></i></div>
+          <div class="item-info">
+            <h3>Clean Water Access <span class="item-price">$4/mo</span></h3>
+            <p>Safe, clean drinking water where a child lives and learns.</p>
+          </div>
+          <span class="item-toggle">Added ✓</span>
+        </div>
+        <div class="item-card selected" data-id="books" data-price="5" data-name="School Books &amp; Learning Materials">
+          <div class="item-icon"><i class="fa-solid fa-book-open"></i></div>
+          <div class="item-info">
+            <h3>School Books &amp; Learning Materials <span class="item-price">$5/mo</span></h3>
+            <p>Textbooks and learning materials for every subject.</p>
+          </div>
+          <span class="item-toggle">Added ✓</span>
+        </div>
+        <div class="item-card selected" data-id="mentoring" data-price="6" data-name="Weekly Bible Club &amp; Mentoring">
+          <div class="item-icon"><i class="fa-solid fa-comments"></i></div>
+          <div class="item-info">
+            <h3>Weekly Bible Club &amp; Mentoring <span class="item-price">$6/mo</span></h3>
+            <p>A caring mentor and a weekly Bible club community.</p>
+          </div>
+          <span class="item-toggle">Added ✓</span>
+        </div>
+        <div class="item-card" data-id="uniform" data-price="7" data-name="School Uniform &amp; Shoes">
+          <div class="item-icon"><i class="fa-solid fa-shirt"></i></div>
+          <div class="item-info">
+            <h3>School Uniform &amp; Shoes <span class="item-price">$7/mo</span></h3>
+            <p>A proper uniform and shoes so a child can attend school with dignity.</p>
+          </div>
+          <span class="item-toggle">Add</span>
+        </div>
+        <div class="item-card" data-id="health" data-price="8" data-name="Vitamins &amp; Health Checkups">
+          <div class="item-icon"><i class="fa-solid fa-kit-medical"></i></div>
+          <div class="item-info">
+            <h3>Vitamins &amp; Health Checkups <span class="item-price">$8/mo</span></h3>
+            <p>Basic vitamins and regular health checkups.</p>
+          </div>
+          <span class="item-toggle">Add</span>
+        </div>
+        <div class="item-card" data-id="tutoring" data-price="10" data-name="After-School Tutoring">
+          <div class="item-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div class="item-info">
+            <h3>After-School Tutoring <span class="item-price">$10/mo</span></h3>
+            <p>Extra academic support to help a child keep up and thrive.</p>
+          </div>
+          <span class="item-toggle">Add</span>
+        </div>
+        <div class="item-card" data-id="meals" data-price="12" data-name="Nutritious Daily Meals">
+          <div class="item-icon"><i class="fa-solid fa-utensils"></i></div>
+          <div class="item-info">
+            <h3>Nutritious Daily Meals <span class="item-price">$12/mo</span></h3>
+            <p>Daily meals so a child can focus on learning, not hunger.</p>
+          </div>
+          <span class="item-toggle">Add</span>
+        </div>
+        <div class="item-card" data-id="housing" data-price="15" data-name="Safe Housing Support">
+          <div class="item-icon"><i class="fa-solid fa-house"></i></div>
+          <div class="item-info">
+            <h3>Safe Housing Support <span class="item-price">$15/mo</span></h3>
+            <p>Support toward safe, stable housing for a child's family.</p>
+          </div>
+          <span class="item-toggle">Add</span>
+        </div>
+        <div class="item-card" data-id="tuition" data-price="25" data-name="Tuition &amp; School Fees">
+          <div class="item-icon"><i class="fa-solid fa-school"></i></div>
+          <div class="item-info">
+            <h3>Tuition &amp; School Fees <span class="item-price">$25/mo</span></h3>
+            <p>Full tuition and school fees covered for the year ahead.</p>
+          </div>
+          <span class="item-toggle">Add</span>
+        </div>
+      </div>
+
+      <aside class="cart-summary">
+        <h3>Your Monthly Sponsorship</h3>
+        <div class="cart-sub">Everything below goes directly to your sponsored child.</div>
+        <ul class="cart-list" id="cartList"></ul>
+        <div class="cart-total-row">
+          <span class="cart-total-label">Total</span>
+          <span id="cartTotal">$0</span>
+          <span class="cart-total-unit">/mo</span>
+        </div>
+        <a href="donate.html" id="checkoutBtn" class="btn btn--gold btn--block">Continue to Checkout →</a>
+        <p class="form-note text-center" style="margin-top:12px;">Cancel or change your sponsorship any time.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<div id="mobileCartBar">
+  <div class="mobile-total">
+    <strong id="mobileCartTotal">$0/mo</strong>
+    <small>Your sponsorship</small>
+  </div>
+  <a href="donate.html" id="mobileCheckoutBtn" class="btn btn--gold btn--sm">Checkout →</a>
+</div>
+
+<section class="section section--tight section--cream">
   <div class="container">
     <span class="eyebrow">How It Works</span>
-    <h2 style="margin-bottom:34px;">Sponsorship in Four Simple Steps</h2>
-    <div class="grid grid--4">
+    <h2 style="margin-bottom:34px;">Sponsorship in Three Simple Steps</h2>
+    <div class="grid grid--3">
       <div>
-        <div class="icon-badge"><i class="fa-solid fa-magnifying-glass"></i></div>
-        <h3>1. Choose a Child</h3>
-        <p style="color:var(--muted);">Browse waiting children and select one to sponsor, or let us match you.</p>
-      </div>
-      <div>
-        <div class="icon-badge"><i class="fa-solid fa-heart-circle-check"></i></div>
-        <h3>2. Confirm Sponsorship</h3>
-        <p style="color:var(--muted);">Set up your monthly gift of $38 to fund education, food, and care.</p>
+        <div class="icon-badge"><i class="fa-solid fa-cart-shopping"></i></div>
+        <h3>1. Build Your Sponsorship</h3>
+        <p style="color:var(--muted);">Choose the items above that make up your monthly gift.</p>
       </div>
       <div>
         <div class="icon-badge"><i class="fa-solid fa-envelope-open-text"></i></div>
-        <h3>3. Build a Relationship</h3>
+        <h3>2. Build a Relationship</h3>
         <p style="color:var(--muted);">Exchange letters and photos throughout the year with your sponsored child.</p>
       </div>
       <div>
         <div class="icon-badge"><i class="fa-solid fa-chart-line"></i></div>
-        <h3>4. See the Impact</h3>
+        <h3>3. See the Impact</h3>
         <p style="color:var(--muted);">Receive updates on your child's growth, schooling, and wellbeing.</p>
       </div>
     </div>
@@ -102,7 +241,7 @@
         <div class="info">
           <h3>[Child Name], Age 7</h3>
           <div class="meta">[Country] · Waiting since [Month Year]</div>
-          <a href="donate.html" class="btn btn--navy btn--block btn--sm">Sponsor [Name]</a>
+          <a href="#builder" class="btn btn--navy btn--block btn--sm">Sponsor [Name]</a>
         </div>
       </div>
       <div class="child-card">
@@ -111,7 +250,7 @@
         <div class="info">
           <h3>[Child Name], Age 9</h3>
           <div class="meta">[Country] · Waiting since [Month Year]</div>
-          <a href="donate.html" class="btn btn--navy btn--block btn--sm">Sponsor [Name]</a>
+          <a href="#builder" class="btn btn--navy btn--block btn--sm">Sponsor [Name]</a>
         </div>
       </div>
       <div class="child-card">
@@ -120,7 +259,7 @@
         <div class="info">
           <h3>[Child Name], Age 6</h3>
           <div class="meta">[Country] · Waiting since [Month Year]</div>
-          <a href="donate.html" class="btn btn--navy btn--block btn--sm">Sponsor [Name]</a>
+          <a href="#builder" class="btn btn--navy btn--block btn--sm">Sponsor [Name]</a>
         </div>
       </div>
       <div class="child-card">
@@ -129,7 +268,7 @@
         <div class="info">
           <h3>[Child Name], Age 11</h3>
           <div class="meta">[Country] · Waiting since [Month Year]</div>
-          <a href="donate.html" class="btn btn--navy btn--block btn--sm">Sponsor [Name]</a>
+          <a href="#builder" class="btn btn--navy btn--block btn--sm">Sponsor [Name]</a>
         </div>
       </div>
       <div class="child-card">
@@ -138,7 +277,7 @@
         <div class="info">
           <h3>[Child Name], Age 8</h3>
           <div class="meta">[Country] · Waiting since [Month Year]</div>
-          <a href="donate.html" class="btn btn--navy btn--block btn--sm">Sponsor [Name]</a>
+          <a href="#builder" class="btn btn--navy btn--block btn--sm">Sponsor [Name]</a>
         </div>
       </div>
       <div class="child-card">
@@ -147,7 +286,7 @@
         <div class="info">
           <h3>[Child Name], Age 10</h3>
           <div class="meta">[Country] · Waiting since [Month Year]</div>
-          <a href="donate.html" class="btn btn--navy btn--block btn--sm">Sponsor [Name]</a>
+          <a href="#builder" class="btn btn--navy btn--block btn--sm">Sponsor [Name]</a>
         </div>
       </div>
     </div>
@@ -160,16 +299,16 @@
 <section class="section">
   <div class="container split">
     <div>
-      <span class="eyebrow">What Your Sponsorship Provides</span>
-      <h2>$38/Month Makes a Real Difference</h2>
+      <span class="eyebrow">Every Dollar, Accounted For</span>
+      <h2>See Exactly Where Your Gift Goes</h2>
+      <p>No lump-sum guessing — you choose the specific items your sponsorship covers, from a $1 pencil to $25 in tuition. Add as much or as little as fits your budget, and adjust any time.</p>
       <ul style="color:var(--muted);">
-        <li>Access to education, tutoring, and school supplies</li>
-        <li>Nutritious meals and basic healthcare</li>
-        <li>Bible-based mentoring and discipleship</li>
-        <li>Community and family support programs</li>
+        <li>Direct, itemized support — not a vague monthly total</li>
         <li>A personal connection through letters and updates</li>
+        <li>Bible-based mentoring and discipleship</li>
+        <li>Change or cancel your sponsorship any time</li>
       </ul>
-      <a href="donate.html" class="btn btn--gold">Start Sponsoring Today</a>
+      <a href="#builder" class="btn btn--gold">Build Your Sponsorship</a>
     </div>
     <div class="split-media">
       <img src="https://picsum.photos/seed/pk-sponsor-impact/900/700" alt="Impact of child sponsorship">
@@ -228,5 +367,121 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+(function () {
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.item-card'));
+  var cartList = document.getElementById('cartList');
+  var cartTotal = document.getElementById('cartTotal');
+  var checkoutBtn = document.getElementById('checkoutBtn');
+  var mobileTotal = document.getElementById('mobileCartTotal');
+  var mobileCheckoutBtn = document.getElementById('mobileCheckoutBtn');
+  var bundleBtns = Array.prototype.slice.call(document.querySelectorAll('.bundle-btn'));
+
+  var bundles = {
+    starter: ['supplies', 'hygiene', 'water', 'books', 'mentoring'],
+    full: ['supplies', 'hygiene', 'water', 'books', 'mentoring', 'uniform', 'health', 'tutoring', 'meals'],
+    complete: ['supplies', 'hygiene', 'faith', 'reading', 'water', 'books', 'mentoring', 'uniform', 'health', 'tutoring', 'meals', 'housing', 'tuition']
+  };
+
+  var selected = {}; // id -> { name, price }
+
+  function cardById(id) {
+    return cards.filter(function (c) { return c.dataset.id === id; })[0];
+  }
+
+  function setCardState(card, isSelected) {
+    var toggle = card.querySelector('.item-toggle');
+    if (isSelected) {
+      card.classList.add('selected');
+      toggle.textContent = 'Added ✓';
+    } else {
+      card.classList.remove('selected');
+      toggle.textContent = 'Add';
+    }
+  }
+
+  function toggleItem(id) {
+    var card = cardById(id);
+    if (!card) return;
+    if (selected[id]) {
+      delete selected[id];
+      setCardState(card, false);
+    } else {
+      selected[id] = { name: card.dataset.name, price: parseFloat(card.dataset.price) };
+      setCardState(card, true);
+    }
+    bundleBtns.forEach(function (b) { b.classList.remove('active'); });
+    render();
+  }
+
+  function applyBundle(name) {
+    Object.keys(selected).forEach(function (id) { delete selected[id]; });
+    cards.forEach(function (c) { setCardState(c, false); });
+    bundles[name].forEach(function (id) {
+      var card = cardById(id);
+      if (card) {
+        selected[id] = { name: card.dataset.name, price: parseFloat(card.dataset.price) };
+        setCardState(card, true);
+      }
+    });
+    render();
+  }
+
+  function render() {
+    var ids = Object.keys(selected);
+    if (ids.length === 0) {
+      cartList.innerHTML = '<li class="cart-empty">Nothing selected yet — tap an item to begin.</li>';
+    } else {
+      cartList.innerHTML = ids.map(function (id) {
+        var it = selected[id];
+        return '<li><span>' + it.name + '</span><span class="cart-line">$' + it.price +
+          '<button type="button" class="cart-remove" data-id="' + id + '" aria-label="Remove ' + it.name + '">&times;</button></span></li>';
+      }).join('');
+      Array.prototype.slice.call(cartList.querySelectorAll('.cart-remove')).forEach(function (btn) {
+        btn.addEventListener('click', function () { toggleItem(btn.dataset.id); });
+      });
+    }
+
+    var total = ids.reduce(function (sum, id) { return sum + selected[id].price; }, 0);
+    cartTotal.textContent = '$' + total;
+    if (mobileTotal) mobileTotal.textContent = '$' + total + '/mo';
+
+    var itemNames = ids.map(function (id) { return selected[id].name; }).join(', ');
+    var href = 'donate.html?monthly=1&amount=' + total + (itemNames ? '&items=' + encodeURIComponent(itemNames) : '');
+    [checkoutBtn, mobileCheckoutBtn].forEach(function (btn) {
+      if (!btn) return;
+      btn.href = href;
+      btn.setAttribute('aria-disabled', total === 0 ? 'true' : 'false');
+    });
+  }
+
+  cards.forEach(function (card) {
+    card.addEventListener('click', function () { toggleItem(card.dataset.id); });
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'checkbox');
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleItem(card.dataset.id); }
+    });
+  });
+
+  bundleBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      applyBundle(btn.dataset.bundle);
+      bundleBtns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+    });
+  });
+
+  // Sync JS state with any items pre-selected in the HTML (e.g. the default Starter bundle)
+  cards.forEach(function (card) {
+    if (card.classList.contains('selected')) {
+      selected[card.dataset.id] = { name: card.dataset.name, price: parseFloat(card.dataset.price) };
+    }
+  });
+
+  document.body.classList.add('has-mobile-cart');
+  render();
+})();
+</script>
 </body>
 </html>

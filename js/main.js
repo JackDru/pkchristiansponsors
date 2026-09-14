@@ -32,6 +32,42 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  // Pre-fill donation amount/summary from a sponsorship builder handoff
+  // (sponsor.html links here as donate.html?monthly=1&amount=18&items=...)
+  var params = new URLSearchParams(window.location.search);
+  if (params.has('amount')) {
+    var amount = params.get('amount');
+    var itemsParam = params.get('items');
+
+    if (params.get('monthly') === '1') {
+      var monthlyBtn = document.querySelectorAll('.toggle-group button')[1];
+      if (monthlyBtn) {
+        toggleBtns.forEach(function (b) { b.classList.remove('active'); });
+        monthlyBtn.classList.add('active');
+      }
+    }
+
+    var matchedOption = document.querySelector('.amount-option[data-amount="' + amount + '"]');
+    amountOptions.forEach(function (o) { o.classList.remove('selected'); });
+    var customInput = document.querySelector('#customAmount');
+    if (matchedOption) {
+      matchedOption.classList.add('selected');
+    } else {
+      var customOption = document.querySelector('.amount-option[data-amount="custom"]');
+      if (customOption) customOption.classList.add('selected');
+      if (customInput) customInput.value = amount;
+    }
+
+    if (itemsParam) {
+      var summary = document.getElementById('orderSummary');
+      if (summary) {
+        summary.hidden = false;
+        summary.querySelector('.order-summary-items').textContent = decodeURIComponent(itemsParam);
+        summary.querySelector('.order-summary-total').textContent = '$' + amount + '/mo';
+      }
+    }
+  }
+
   // Placeholder form submit handling — no backend wired up yet
   var forms = document.querySelectorAll('form[data-placeholder-form]');
   forms.forEach(function (form) {
