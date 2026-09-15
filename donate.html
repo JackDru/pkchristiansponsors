@@ -60,10 +60,11 @@
 
 <section class="section">
   <div class="container" style="max-width:760px;">
-    <div class="sample-flag">
-      <strong><i class="fa-solid fa-triangle-exclamation"></i> Not yet functional:</strong>
-      This is a payment-form UI placeholder only — no payment processor is connected. Wire it up to a real processor (e.g. Stripe, PayPal Giving, or a dedicated platform like Give or Kindful) before accepting real donations.
+    <div class="sample-flag" id="testModeFlag">
+      <strong><i class="fa-solid fa-flask"></i> Test mode:</strong>
+      Payments run through Stripe's test environment — no real money moves. Use card number <code>4242 4242 4242 4242</code>, any future expiry date, any 3-digit CVC, and any ZIP code.
     </div>
+    <div class="sample-flag" id="checkoutError" hidden style="border-color:#C0392B;background:#FDECEA;color:#7A1F1F;"></div>
 
     <div class="order-summary" id="orderSummary" hidden>
       <h3><i class="fa-solid fa-cart-shopping"></i> Your Sponsorship Selections</h3>
@@ -84,7 +85,7 @@
       <div class="amount-option" data-amount="custom">Other</div>
     </div>
 
-    <form data-placeholder-form>
+    <form id="donateForm">
       <div class="form-field">
         <label for="customAmount">Custom Amount (USD)</label>
         <input type="number" id="customAmount" min="1" placeholder="Enter an amount">
@@ -103,12 +104,8 @@
         <label for="donorEmail">Email Address</label>
         <input type="email" id="donorEmail" required>
       </div>
-      <div class="form-field">
-        <label for="cardNumber">Card Number</label>
-        <input type="text" id="cardNumber" placeholder="•••• •••• •••• ••••" disabled>
-        <p class="form-note">Disabled placeholder — connect a real payment processor to enable this field.</p>
-      </div>
-      <button type="submit" class="btn btn--gold btn--block">Give Now</button>
+      <p class="form-note" style="margin:-6px 0 18px;"><i class="fa-solid fa-lock"></i> Card details are entered on Stripe's secure, hosted checkout page — this site never sees or stores your card number.</p>
+      <button type="submit" class="btn btn--gold btn--block" id="donateSubmitBtn">Give Now</button>
       <p class="form-note text-center" style="margin-top:14px;">PK Christian Sponsors is a registered 501(c)(3). Your gift may be tax-deductible.</p>
     </form>
   </div>
@@ -240,5 +237,81 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+(function () {
+  var form = document.getElementById('donateForm');
+  if (!form) return;
+
+  var submitBtn = document.getElementById('donateSubmitBtn');
+  var errorBox = document.getElementById('checkoutError');
+
+  function getSelectedAmount() {
+    var selected = document.querySelector('.amount-option.selected');
+    if (!selected) return null;
+    if (selected.dataset.amount === 'custom') {
+      var val = parseFloat(document.getElementById('customAmount').value);
+      return Number.isFinite(val) ? val : null;
+    }
+    return parseFloat(selected.dataset.amount);
+  }
+
+  function getFrequency() {
+    var active = document.querySelector('.toggle-group button.active');
+    return active && active.textContent.trim() === 'Monthly' ? 'monthly' : 'one-time';
+  }
+
+  function getItemsSummary() {
+    var summary = document.querySelector('#orderSummary .order-summary-items');
+    return summary && !document.getElementById('orderSummary').hidden ? summary.textContent.trim() : '';
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    errorBox.hidden = true;
+
+    var amount = getSelectedAmount();
+    if (!amount || amount < 1) {
+      errorBox.textContent = 'Please choose or enter a valid gift amount.';
+      errorBox.hidden = false;
+      return;
+    }
+
+    var firstName = document.getElementById('firstName').value.trim();
+    var lastName = document.getElementById('lastName').value.trim();
+    var email = document.getElementById('donorEmail').value.trim();
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Redirecting to secure checkout…';
+
+    fetch('/api/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        amount: amount,
+        frequency: getFrequency() === 'monthly' ? 'monthly' : 'one-time',
+        email: email,
+        name: (firstName + ' ' + lastName).trim(),
+        items: getItemsSummary()
+      })
+    })
+      .then(function (res) {
+        return res.json().then(function (data) { return { ok: res.ok, data: data }; });
+      })
+      .then(function (result) {
+        if (result.ok && result.data.url) {
+          window.location.href = result.data.url;
+        } else {
+          throw new Error((result.data && result.data.error) || 'Something went wrong. Please try again.');
+        }
+      })
+      .catch(function (err) {
+        errorBox.textContent = err.message || 'Something went wrong. Please try again.';
+        errorBox.hidden = false;
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Give Now';
+      });
+  });
+})();
+</script>
 </body>
 </html>
