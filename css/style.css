@@ -533,6 +533,7 @@ header.site-header {
 }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .form-note { font-size: 0.82rem; color: var(--muted); margin-top: -6px; }
+.hp-field { position: absolute; left: -9999px; }
 
 .amount-grid {
   display: grid;

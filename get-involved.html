@@ -115,9 +115,11 @@
       <span class="tag-pill">Prayer Team</span>
       <h2>Join Our Prayer Team</h2>
       <p>Prayer undergirds everything we do. Join our monthly prayer team to receive requests from the field and pray for children, families, and staff around the world.</p>
-      <form data-placeholder-form class="form-field" style="max-width:420px;">
+      <form name="prayer-team" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" class="form-field" style="max-width:420px;">
+        <input type="hidden" name="form-name" value="prayer-team">
+        <p class="hp-field"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
         <label for="prayerEmail">Email address</label>
-        <input type="email" id="prayerEmail" placeholder="you@example.com" required>
+        <input type="email" id="prayerEmail" name="email" placeholder="you@example.com" required>
         <button type="submit" class="btn btn--gold" style="margin-top:14px;">Join the Prayer Team</button>
       </form>
     </div>

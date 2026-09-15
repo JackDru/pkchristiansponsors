@@ -63,24 +63,26 @@
     <div>
       <span class="eyebrow">Get in Touch</span>
       <h2>Send Us a Message</h2>
-      <form data-placeholder-form>
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
+        <input type="hidden" name="form-name" value="contact">
+        <p class="hp-field"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
         <div class="form-row">
           <div class="form-field">
             <label for="cFirst">First Name</label>
-            <input type="text" id="cFirst" required>
+            <input type="text" id="cFirst" name="first-name" required>
           </div>
           <div class="form-field">
             <label for="cLast">Last Name</label>
-            <input type="text" id="cLast" required>
+            <input type="text" id="cLast" name="last-name" required>
           </div>
         </div>
         <div class="form-field">
           <label for="cEmail">Email Address</label>
-          <input type="email" id="cEmail" required>
+          <input type="email" id="cEmail" name="email" required>
         </div>
         <div class="form-field">
           <label for="cSubject">Subject</label>
-          <select id="cSubject">
+          <select id="cSubject" name="subject">
             <option>General Question</option>
             <option>Sponsorship</option>
             <option>Volunteering</option>
@@ -90,10 +92,10 @@
         </div>
         <div class="form-field">
           <label for="cMessage">Message</label>
-          <textarea id="cMessage" rows="5" required></textarea>
+          <textarea id="cMessage" name="message" rows="5" required></textarea>
         </div>
         <button type="submit" class="btn btn--gold">Send Message</button>
-        <p class="form-note" style="margin-top:14px;">Placeholder form — connect to a form service (e.g. Formspree) or your CRM to receive real submissions.</p>
+        <p class="form-note" style="margin-top:14px;">Submissions land in your Netlify dashboard under Forms (and can be forwarded to your email — see Netlify's form notification settings).</p>
       </form>
     </div>
     <div>

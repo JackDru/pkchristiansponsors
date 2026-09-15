@@ -178,8 +178,10 @@
         <h3 class="mb-0">Stay Connected</h3>
         <p class="mb-0">Get monthly updates and prayer requests from the field.</p>
       </div>
-      <form data-placeholder-form>
-        <input type="email" placeholder="Your email address" required>
+      <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
+        <input type="hidden" name="form-name" value="newsletter">
+        <p class="hp-field"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
+        <input type="email" name="email" placeholder="Your email address" required>
         <button class="btn btn--navy" type="submit">Subscribe</button>
       </form>
     </div>
