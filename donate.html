@@ -7,7 +7,7 @@
 <meta name="description" content="Give a one-time or monthly gift to PK Christian Sponsors and help provide education, nourishment, and hope to children in need.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✝️</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -29,8 +29,7 @@
 <header class="site-header">
   <div class="container nav">
     <a href="index.html" class="brand">
-      <span class="mark">PK</span>
-      <span>PK Christian Sponsors<small>Faith in Action, Hope for a Lifetime</small></span>
+      <img src="images/logo-black.png" alt="PK Christian Sponsors" class="brand-logo">
     </a>
     <nav>
       <ul class="nav-links">
@@ -39,6 +38,7 @@
         <li><a href="programs.html">Programs</a></li>
         <li><a href="sponsor.html">Sponsor a Child</a></li>
         <li><a href="stories.html">Stories</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
         <li><a href="get-involved.html">Get Involved</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -58,60 +58,139 @@
   </div>
 </section>
 
-<section class="section">
-  <div class="container" style="max-width:760px;">
+<section class="section" id="builder">
+  <div class="container">
     <div class="sample-flag" id="testModeFlag">
       <strong><i class="fa-solid fa-flask"></i> Test mode:</strong>
       Payments run through Stripe's test environment — no real money moves. Use card number <code>4242 4242 4242 4242</code>, any future expiry date, any 3-digit CVC, and any ZIP code.
     </div>
     <div class="sample-flag" id="checkoutError" hidden style="border-color:#C0392B;background:#FDECEA;color:#7A1F1F;"></div>
 
-    <div class="order-summary" id="orderSummary" hidden>
-      <h3><i class="fa-solid fa-cart-shopping"></i> Your Sponsorship Selections</h3>
-      <p class="order-summary-items"></p>
-      <div class="order-summary-total-row">Monthly Total: <strong class="order-summary-total"></strong></div>
-    </div>
+    <span class="eyebrow">Build Your Gift</span>
+    <h2 style="margin-bottom:8px;">Choose What Your Gift Provides</h2>
+    <p class="lede">Every item below goes directly to a specific need at Grace Charity School. Tap to add it to your gift, then give.</p>
 
-    <div class="toggle-group">
-      <button type="button" class="active">One-Time</button>
-      <button type="button">Monthly</button>
-    </div>
-
-    <h2>Choose Your Gift Amount</h2>
-    <div class="amount-grid">
-      <div class="amount-option selected" data-amount="25">$25</div>
-      <div class="amount-option" data-amount="50">$50</div>
-      <div class="amount-option" data-amount="100">$100</div>
-      <div class="amount-option" data-amount="custom">Other</div>
-    </div>
-
-    <form id="donateForm">
-      <div class="form-field">
-        <label for="customAmount">Custom Amount (USD)</label>
-        <input type="number" id="customAmount" min="1" placeholder="Enter an amount">
+    <div class="value-callout">
+      <div class="value-icon"><i class="fa-solid fa-video"></i></div>
+      <div>
+        <h3>Included with every gift — twice a year</h3>
+        <p>A personal video check-in from your child: a real "thank you," in their own words, plus what they've learned since your last gift. You're not giving to an abyss — you're getting to know a real kid.</p>
       </div>
-      <div class="form-row">
-        <div class="form-field">
-          <label for="firstName">First Name</label>
-          <input type="text" id="firstName" required>
+    </div>
+
+    <div class="builder-layout">
+      <div class="item-grid item-grid--products" id="itemGrid">
+        <div class="item-card item-card--product selected" data-id="tuition" data-price="25" data-name="Tuition &amp; School Fees">
+          <div class="item-photo"><img src="images/gallery/690743312_10238207178231028_1238630617117092862_n.jpg" alt="Classroom at Grace Charity School — tuition and school fees"></div>
+          <div class="item-info">
+            <h3>Tuition &amp; Fees <span class="item-price">$25</span></h3>
+            <p>A full month of classroom instruction, covered.</p>
+          </div>
+          <span class="item-toggle">Added ✓</span>
         </div>
-        <div class="form-field">
-          <label for="lastName">Last Name</label>
-          <input type="text" id="lastName" required>
+        <div class="item-card item-card--product selected" data-id="books" data-price="8" data-name="Books &amp; Learning Materials">
+          <div class="item-photo"><img src="images/gallery/grace-charity-school-redeeming-love-missions-teachers-cards-35.jpg" alt="Students with notebooks and learning materials"></div>
+          <div class="item-info">
+            <h3>Books &amp; Supplies <span class="item-price">$8</span></h3>
+            <p>Textbooks, notebooks, and pencils for a full term.</p>
+          </div>
+          <span class="item-toggle">Added ✓</span>
+        </div>
+        <div class="item-card item-card--product" data-id="housing" data-price="15" data-name="Housing Support">
+          <div class="item-photo"><img src="images/gallery/grace-charity-school-redeeming-love-missions-general-2.jpg" alt="Housing conditions near Grace Charity School"></div>
+          <div class="item-info">
+            <h3>Housing <span class="item-price">$15</span></h3>
+            <p>Support toward safe, stable housing for a child's family.</p>
+          </div>
+          <span class="item-toggle">Add</span>
+        </div>
+        <div class="item-card item-card--product" data-id="food" data-price="12" data-name="Food">
+          <div class="item-photo"><img src="images/gallery/561262745_10235132029994244_7229124875787738618_n.jpg" alt="A meal provided to a child at Grace Charity School"></div>
+          <div class="item-info">
+            <h3>Food <span class="item-price">$12</span></h3>
+            <p>A month of daily meals so a child can focus on learning.</p>
+          </div>
+          <span class="item-toggle">Add</span>
+        </div>
+        <div class="item-card item-card--product" data-id="equipment" data-price="10" data-name="Equipment, Crafts &amp; Extracurriculars">
+          <div class="item-photo"><img src="images/gallery/593585728_10235902012643329_3356863374190397718_n.jpg" alt="Equipment and extracurricular activities at Grace Charity School"></div>
+          <div class="item-info">
+            <h3>Equipment &amp; Extracurriculars <span class="item-price">$10</span></h3>
+            <p>Sports gear, art supplies, and after-school activities.</p>
+          </div>
+          <span class="item-toggle">Add</span>
         </div>
       </div>
-      <div class="form-field">
-        <label for="donorEmail">Email Address</label>
-        <input type="email" id="donorEmail" required>
-      </div>
-      <p class="form-note" style="margin:-6px 0 18px;"><i class="fa-solid fa-lock"></i> Card details are entered on Stripe's secure, hosted checkout page — this site never sees or stores your card number.</p>
-      <button type="submit" class="btn btn--gold btn--block" id="donateSubmitBtn">Give Now</button>
-      <p class="form-note text-center" style="margin-top:14px;">PK Christian Sponsors is a registered 501(c)(3). Your gift may be tax-deductible.</p>
-    </form>
+
+      <aside class="cart-summary">
+        <h3>Your Gift</h3>
+        <div class="cart-sub">Everything below goes directly to Grace Charity School.</div>
+        <ul class="cart-list" id="cartList"></ul>
+        <div class="cart-total-row">
+          <span class="cart-total-label">Total</span>
+          <span id="cartTotal">$0</span>
+          <span class="cart-total-unit" id="cartTotalUnit">one-time</span>
+        </div>
+
+        <div class="toggle-group" style="width:100%;margin-bottom:20px;">
+          <button type="button" class="freq-btn active" data-freq="one-time" style="flex:1;">One-Time</button>
+          <button type="button" class="freq-btn" data-freq="monthly" style="flex:1;">Monthly</button>
+        </div>
+
+        <form id="donateForm">
+          <div class="form-field">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" required>
+          </div>
+          <div class="form-field">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" required>
+          </div>
+          <div class="form-field">
+            <label for="donorEmail">Email Address</label>
+            <input type="email" id="donorEmail" required>
+          </div>
+          <p class="form-note" style="margin:-6px 0 14px;"><i class="fa-solid fa-lock"></i> Card details are entered on Stripe's secure, hosted checkout page — this site never sees or stores your card number.</p>
+          <button type="submit" class="btn btn--gold btn--block" id="donateSubmitBtn">Give Now</button>
+          <p class="form-note text-center" style="margin-top:12px;">PK Christian Sponsors is a registered 501(c)(3). Your gift may be tax-deductible.</p>
+        </form>
+      </aside>
+    </div>
   </div>
 </section>
 
+<div id="mobileCartBar">
+  <div class="mobile-total">
+    <strong id="mobileCartTotal">$33</strong>
+    <small>Your gift</small>
+  </div>
+  <button type="button" class="btn btn--gold btn--sm" onclick="document.getElementById('donateForm').scrollIntoView({behavior:'smooth'});">Give Now →</button>
+</div>
+
 <section class="section section--cream">
+  <div class="container" style="max-width:700px;">
+    <div class="repairs-card">
+      <span class="eyebrow">Special Project</span>
+      <h2 style="margin-bottom:8px;">Help Us Reach $5,000 for School Repairs</h2>
+      <p class="lede">The roof over two classrooms needs urgent repair before the rainy season puts lessons — and safety — at risk. Every dollar brings us closer.</p>
+      <div class="repairs-bar-track"><div class="repairs-bar-fill" id="repairsBarFill" style="width:47%;"></div></div>
+      <div class="repairs-meta">
+        <span id="repairsRaised">$2,340 raised</span>
+        <span>Goal: $5,000</span>
+      </div>
+      <div class="amount-grid" id="repairsAmountGrid" style="margin-bottom:20px;">
+        <div class="amount-option selected" data-repair-amount="25">$25</div>
+        <div class="amount-option" data-repair-amount="50">$50</div>
+        <div class="amount-option" data-repair-amount="100">$100</div>
+        <div class="amount-option" data-repair-amount="250">$250</div>
+      </div>
+      <button type="button" class="btn btn--navy btn--block" id="repairsGiveBtn">Chip In Toward Repairs</button>
+      <p class="form-note text-center" style="margin-top:12px;">Sample progress shown for design purposes — connect to your real, live total before launch.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
   <div class="container" style="max-width:760px;">
     <span class="eyebrow">Financial Accountability</span>
     <h2>Where Your Gift Goes</h2>
@@ -134,49 +213,9 @@
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <span class="eyebrow">Other Ways to Give</span>
-    <h2 style="margin-bottom:34px;">Choose the Giving Option That's Right for You</h2>
-    <div class="grid grid--3">
-      <div class="tier">
-        <h3>Child Sponsorship</h3>
-        <div class="amount">$38<span>/mo</span></div>
-        <ul>
-          <li>Ongoing relationship with one child</li>
-          <li>Education &amp; nourishment</li>
-          <li>Letters &amp; photo updates</li>
-        </ul>
-        <a href="sponsor.html" class="btn btn--ghost btn--block">Sponsor a Child</a>
-      </div>
-      <div class="tier tier--featured">
-        <span class="badge">Most Flexible</span>
-        <h3>Ministry Partner</h3>
-        <div class="amount">$50<span>/mo</span></div>
-        <ul>
-          <li>Supports where most needed</li>
-          <li>Funds emergency response</li>
-          <li>Quarterly impact reports</li>
-        </ul>
-        <a href="#" class="btn btn--gold btn--block">Become a Partner</a>
-      </div>
-      <div class="tier">
-        <h3>One-Time Gift</h3>
-        <div class="amount">Any<span> amount</span></div>
-        <ul>
-          <li>Flexible, no commitment</li>
-          <li>Great for special campaigns</li>
-          <li>Tax-deductible receipt</li>
-        </ul>
-        <a href="#" class="btn btn--ghost btn--block">Give Once</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="section section--cream">
   <div class="container">
-    <div class="cta-banner" style="background:linear-gradient(120deg,#12233F,#1B3560);">
+    <div class="cta-banner" style="background:linear-gradient(120deg,#145C8E,#1C7CB5);">
       <h2>Other Ways to Give</h2>
       <p style="max-width:520px;margin:0 auto 26px;">Ask about stock gifts, donor-advised funds, planned giving, and matching gifts through your employer.</p>
       <div class="btn-row" style="justify-content:center;">
@@ -191,7 +230,7 @@
     <div class="footer-grid">
       <div>
         <div class="footer-brand">
-          <span class="mark" style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#E3A23C,#C6852A);color:#12233F;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-weight:700;">PK</span>
+          <span class="mark" style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#3FA9DD,#2C8BB8);color:#145C8E;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-weight:700;">PK</span>
           <span>PK Christian Sponsors</span>
         </div>
         <p>A faith-based nonprofit dedicated to releasing children from poverty in Jesus' name through sponsorship, education, and community partnership.</p>
@@ -244,34 +283,118 @@
 
   var submitBtn = document.getElementById('donateSubmitBtn');
   var errorBox = document.getElementById('checkoutError');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.item-card'));
+  var cartList = document.getElementById('cartList');
+  var cartTotal = document.getElementById('cartTotal');
+  var cartTotalUnit = document.getElementById('cartTotalUnit');
+  var mobileTotal = document.getElementById('mobileCartTotal');
+  var bundleBtns = Array.prototype.slice.call(document.querySelectorAll('.bundle-btn'));
+  var freqBtns = Array.prototype.slice.call(document.querySelectorAll('.freq-btn'));
 
-  function getSelectedAmount() {
-    var selected = document.querySelector('.amount-option.selected');
-    if (!selected) return null;
-    if (selected.dataset.amount === 'custom') {
-      var val = parseFloat(document.getElementById('customAmount').value);
-      return Number.isFinite(val) ? val : null;
+  var bundles = {
+    starter: ['supplies', 'hygiene', 'water', 'books', 'mentoring'],
+    full: ['supplies', 'hygiene', 'water', 'books', 'mentoring', 'uniform', 'health', 'tutoring', 'meals'],
+    complete: ['supplies', 'hygiene', 'faith', 'reading', 'water', 'books', 'mentoring', 'uniform', 'health', 'tutoring', 'meals', 'housing', 'tuition']
+  };
+
+  var selected = {};
+  var frequency = 'one-time';
+
+  function cardById(id) { return cards.filter(function (c) { return c.dataset.id === id; })[0]; }
+
+  function setCardState(card, isSelected) {
+    var toggle = card.querySelector('.item-toggle');
+    if (isSelected) { card.classList.add('selected'); toggle.textContent = 'Added ✓'; }
+    else { card.classList.remove('selected'); toggle.textContent = 'Add'; }
+  }
+
+  function toggleItem(id) {
+    var card = cardById(id);
+    if (!card) return;
+    if (selected[id]) { delete selected[id]; setCardState(card, false); }
+    else { selected[id] = { name: card.dataset.name, price: parseFloat(card.dataset.price) }; setCardState(card, true); }
+    bundleBtns.forEach(function (b) { b.classList.remove('active'); });
+    render();
+  }
+
+  function applyBundle(name) {
+    Object.keys(selected).forEach(function (id) { delete selected[id]; });
+    cards.forEach(function (c) { setCardState(c, false); });
+    bundles[name].forEach(function (id) {
+      var card = cardById(id);
+      if (card) { selected[id] = { name: card.dataset.name, price: parseFloat(card.dataset.price) }; setCardState(card, true); }
+    });
+    render();
+  }
+
+  function render() {
+    var ids = Object.keys(selected);
+    if (ids.length === 0) {
+      cartList.innerHTML = '<li class="cart-empty">Nothing selected yet — tap an item to begin.</li>';
+    } else {
+      cartList.innerHTML = ids.map(function (id) {
+        var it = selected[id];
+        return '<li><span>' + it.name + '</span><span class="cart-line">$' + it.price +
+          '<button type="button" class="cart-remove" data-id="' + id + '" aria-label="Remove ' + it.name + '">&times;</button></span></li>';
+      }).join('');
+      Array.prototype.slice.call(cartList.querySelectorAll('.cart-remove')).forEach(function (btn) {
+        btn.addEventListener('click', function () { toggleItem(btn.dataset.id); });
+      });
     }
-    return parseFloat(selected.dataset.amount);
+    var total = ids.reduce(function (sum, id) { return sum + selected[id].price; }, 0);
+    cartTotal.textContent = '$' + total;
+    cartTotalUnit.textContent = frequency === 'monthly' ? '/mo' : 'one-time';
+    if (mobileTotal) mobileTotal.textContent = '$' + total;
   }
 
-  function getFrequency() {
-    var active = document.querySelector('.toggle-group button.active');
-    return active && active.textContent.trim() === 'Monthly' ? 'monthly' : 'one-time';
-  }
+  cards.forEach(function (card) {
+    card.addEventListener('click', function () { toggleItem(card.dataset.id); });
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'checkbox');
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleItem(card.dataset.id); }
+    });
+  });
+
+  bundleBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      applyBundle(btn.dataset.bundle);
+      bundleBtns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+    });
+  });
+
+  freqBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      frequency = btn.dataset.freq;
+      freqBtns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      render();
+    });
+  });
+
+  cards.forEach(function (card) {
+    if (card.classList.contains('selected')) {
+      selected[card.dataset.id] = { name: card.dataset.name, price: parseFloat(card.dataset.price) };
+    }
+  });
+  render();
 
   function getItemsSummary() {
-    var summary = document.querySelector('#orderSummary .order-summary-items');
-    return summary && !document.getElementById('orderSummary').hidden ? summary.textContent.trim() : '';
+    return Object.keys(selected).map(function (id) { return selected[id].name; }).join(', ');
+  }
+
+  function getTotal() {
+    return Object.keys(selected).reduce(function (sum, id) { return sum + selected[id].price; }, 0);
   }
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     errorBox.hidden = true;
 
-    var amount = getSelectedAmount();
+    var amount = getTotal();
     if (!amount || amount < 1) {
-      errorBox.textContent = 'Please choose or enter a valid gift amount.';
+      errorBox.textContent = 'Please select at least one item for your gift.';
       errorBox.hidden = false;
       return;
     }
@@ -288,7 +411,7 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         amount: amount,
-        frequency: getFrequency() === 'monthly' ? 'monthly' : 'one-time',
+        frequency: frequency,
         email: email,
         name: (firstName + ' ' + lastName).trim(),
         items: getItemsSummary()
@@ -311,6 +434,36 @@
         submitBtn.textContent = 'Give Now';
       });
   });
+
+  // School repairs crowdfund — quick one-time contribution, separate from the main gift builder
+  var repairsBtn = document.getElementById('repairsGiveBtn');
+  if (repairsBtn) {
+    repairsBtn.addEventListener('click', function () {
+      var selectedAmt = document.querySelector('#repairsAmountGrid .amount-option.selected');
+      var amount = selectedAmt ? parseFloat(selectedAmt.dataset.repairAmount) : 25;
+      repairsBtn.disabled = true;
+      repairsBtn.textContent = 'Redirecting to secure checkout…';
+      fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          amount: amount,
+          frequency: 'one-time',
+          items: 'School Repairs Fund contribution'
+        })
+      })
+        .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+        .then(function (result) {
+          if (result.ok && result.data.url) { window.location.href = result.data.url; }
+          else { throw new Error((result.data && result.data.error) || 'Something went wrong. Please try again.'); }
+        })
+        .catch(function (err) {
+          alert(err.message || 'Something went wrong. Please try again.');
+          repairsBtn.disabled = false;
+          repairsBtn.textContent = 'Chip In Toward Repairs';
+        });
+    });
+  }
 })();
 </script>
 </body>

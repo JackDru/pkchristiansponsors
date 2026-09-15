@@ -5,11 +5,30 @@ import type { Context, Config } from "@netlify/functions";
 // Requires STRIPE_SECRET_KEY to be set as a Netlify environment variable.
 
 export default async (req: Request, context: Context) => {
-  if (req.method !== "POST") {
+  var isDebug = new URL(req.url).searchParams.get("debug") === "1";
+
+  if (req.method !== "POST" && !isDebug) {
     return new Response(JSON.stringify({ error: "Method not allowed" }), {
       status: 405,
       headers: { "Content-Type": "application/json" },
     });
+  }
+
+  if (isDebug) {
+    return new Response(JSON.stringify({
+      viaNetlifyEnv: !!Netlify.env.get("STRIPE_SECRET_KEY"),
+      viaContextEnv: !!context.env?.get?.("STRIPE_SECRET_KEY"),
+      viaProcessEnv: !!process.env.STRIPE_SECRET_KEY,
+      allEnvKeysContainingStripe: Object.keys(process.env).filter(function (k) { return k.toUpperCase().indexOf("STRIPE") !== -1; }),
+      totalProcessEnvKeyCount: Object.keys(process.env).length,
+      netlifyAutoVars: {
+        URL: Netlify.env.get("URL") || process.env.URL || null,
+        DEPLOY_ID: Netlify.env.get("DEPLOY_ID") || process.env.DEPLOY_ID || null,
+        CONTEXT: Netlify.env.get("CONTEXT") || process.env.CONTEXT || null,
+        SITE_NAME: Netlify.env.get("SITE_NAME") || process.env.SITE_NAME || null,
+      },
+      sampleProcessEnvKeys: Object.keys(process.env).slice(0, 20),
+    }), { status: 200, headers: { "Content-Type": "application/json" } });
   }
 
   let body: { amount?: unknown; frequency?: unknown; items?: unknown; email?: unknown; name?: unknown };
@@ -35,7 +54,8 @@ export default async (req: Request, context: Context) => {
     });
   }
 
-  const secretKey = Netlify.env.get("STRIPE_SECRET_KEY");
+  const secretKey = Netlify.env.get("STRIPE_SECRET_KEY") || context.env?.get?.("STRIPE_SECRET_KEY") || process.env.STRIPE_SECRET_KEY;
+
   if (!secretKey) {
     return new Response(JSON.stringify({ error: "Payments are not configured yet. Please try again later." }), {
       status: 500,

@@ -3,24 +3,26 @@
    ========================================================================== */
 
 :root {
-  --navy: #12233F;
-  --navy-light: #1B3560;
-  --gold: #E3A23C;
-  --gold-dark: #C6852A;
-  --cream: #FBF6EC;
+  /* Variable names kept from the original navy/gold scheme to avoid touching
+     every rule below — values now point to a white + light-blue palette. */
+  --navy: #145C8E;        /* deep blue — headings, dark sections, footer */
+  --navy-light: #1C7CB5;  /* lighter deep blue — hovers, gradients */
+  --gold: #3FA9DD;        /* sky blue — primary buttons, accents */
+  --gold-dark: #2C8BB8;   /* darker sky blue — hover states */
+  --cream: #EAF4FB;       /* pale blue tint — alternate section background */
   --white: #FFFFFF;
-  --text: #2A2A2A;
-  --muted: #667085;
-  --border: #E7E2D6;
+  --text: #23262B;
+  --muted: #5B6570;
+  --border: #DCE8F0;
   --success: #3E7B5B;
 
-  --font-head: 'Poppins', 'Segoe UI', sans-serif;
+  --font-head: 'Inter', 'Segoe UI', sans-serif;
   --font-body: 'Inter', 'Segoe UI', sans-serif;
 
   --container: 1180px;
   --radius: 14px;
-  --shadow: 0 10px 30px rgba(18, 35, 63, 0.10);
-  --shadow-sm: 0 4px 14px rgba(18, 35, 63, 0.08);
+  --shadow: 0 10px 30px rgba(20, 92, 142, 0.10);
+  --shadow-sm: 0 4px 14px rgba(20, 92, 142, 0.08);
 }
 
 * { box-sizing: border-box; }
@@ -47,8 +49,8 @@ h1, h2, h3, h4 {
 }
 
 h1 { font-size: clamp(2.1rem, 4vw, 3.2rem); font-weight: 700; }
-h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); }
-h3 { font-size: 1.3rem; }
+h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 300; }
+h3 { font-size: 1.3rem; font-weight: 600; }
 
 p { margin: 0 0 1em; color: var(--text); }
 
@@ -203,6 +205,14 @@ header.site-header {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
+}
+.brand-logo {
+  height: 62px;
+  width: auto;
+  display: block;
+}
+@media (max-width: 760px) {
+  .brand-logo { height: 50px; }
 }
 
 .nav-links {
@@ -837,6 +847,60 @@ footer.site-footer {
   #mobileCartBar .mobile-total small { display: block; font-weight: 400; font-size: 0.72rem; color: #C4CEE0; }
   body.has-mobile-cart { padding-bottom: 78px; }
 }
+
+/* Value-prop callout (video update bonus) */
+.value-callout {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: linear-gradient(120deg, #EAF4FB, #F7FBFD);
+  border: 2px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 32px;
+}
+.value-callout .value-icon {
+  width: 54px; height: 54px; border-radius: 50%;
+  background: var(--gold); color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.35rem; flex-shrink: 0;
+}
+.value-callout h3 { margin-bottom: 4px; font-size: 1.05rem; }
+.value-callout p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+
+/* Product-style item cards */
+.item-grid--products {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 18px;
+}
+.item-card--product {
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0 0 18px;
+  text-align: center;
+  gap: 0;
+}
+.item-card--product .item-photo {
+  width: 100%; aspect-ratio: 4/3; overflow: hidden;
+  border-radius: 12px 12px 0 0;
+  margin-bottom: 14px;
+}
+.item-card--product .item-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.item-card--product .item-info { padding: 0 16px; }
+.item-card--product .item-info h3 { justify-content: center; }
+.item-card--product .item-toggle { margin: 12px 16px 0; }
+
+/* Crowdfunding-style repairs card */
+.repairs-card {
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+}
+.repairs-bar-track { background: var(--border); border-radius: 999px; height: 16px; overflow: hidden; margin: 18px 0 8px; }
+.repairs-bar-fill { background: linear-gradient(90deg, var(--gold), var(--gold-dark)); height: 100%; border-radius: 999px; }
+.repairs-meta { display: flex; justify-content: space-between; font-weight: 600; color: var(--navy); margin-bottom: 26px; font-size: 0.95rem; }
 
 /* Order summary recap on donate page */
 .order-summary {

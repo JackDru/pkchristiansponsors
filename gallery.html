@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery | PK Christian Sponsors</title>
+<meta name="description" content="Photos from Grace Charity School in Pakistan — the children, staff, and community PK Christian Sponsors supports.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✝️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .gallery-item {
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--cream);
+    aspect-ratio: 4/3;
+    border: 1px solid var(--border);
+  }
+  .gallery-item img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.25s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.06); }
+  .lightbox {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(10, 20, 30, 0.92);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 100%; max-height: 88vh;
+    border-radius: 10px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .lightbox-close {
+    position: absolute; top: 20px; right: 24px;
+    background: rgba(255,255,255,0.15);
+    border: none; color: var(--white);
+    width: 44px; height: 44px; border-radius: 50%;
+    font-size: 1.3rem; cursor: pointer;
+  }
+  .lightbox-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.15);
+    border: none; color: var(--white);
+    width: 48px; height: 48px; border-radius: 50%;
+    font-size: 1.4rem; cursor: pointer;
+  }
+  .lightbox-prev { left: 16px; }
+  .lightbox-next { right: 16px; }
+  @media (max-width: 600px) {
+    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-links">
+      <a href="tel:+18005551234"><i class="fa-solid fa-phone"></i> (800) 555-1234</a>
+      <a href="mailto:hello@pkchristiansponsors.org"><i class="fa-solid fa-envelope"></i> hello@pkchristiansponsors.org</a>
+    </div>
+    <div class="topbar-links">
+      <a href="contact.html">Contact</a>
+      <a href="get-involved.html">Volunteer</a>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="images/logo-black.png" alt="PK Christian Sponsors" class="brand-logo">
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="sponsor.html">Sponsor a Child</a></li>
+        <li><a href="stories.html">Stories</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="get-involved.html">Get Involved</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="donate.html" class="btn btn--gold btn--sm">Donate Now</a>
+      <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero" style="background-image:url('images/gallery/658157772_10237701322144942_1816121801895911546_n.jpg');">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Gallery</div>
+    <h1>Photos From Grace Charity School</h1>
+    <p style="max-width:600px;color:#DCE3EF;">Real moments from the classrooms, staff, and community your gift supports in Pakistan.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Images populated below; each figure references a real photo in images/gallery/ -->
+    </div>
+  </div>
+</section>
+
+<section class="section section--cream">
+  <div class="container">
+    <div class="cta-banner" style="background:linear-gradient(120deg,#145C8E,#1C7CB5);">
+      <h2>See a Face, Give a Gift</h2>
+      <p style="max-width:520px;margin:0 auto 26px;">Every photo here is a real child, teacher, or classroom your gift can directly support.</p>
+      <div class="btn-row" style="justify-content:center;">
+        <a href="donate.html" class="btn btn--gold">Take Me to Gift Selection</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">&#8249;</button>
+  <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">&#8250;</button>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <span class="mark" style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#3FA9DD,#2C8BB8);color:#145C8E;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-weight:700;">PK</span>
+          <span>PK Christian Sponsors</span>
+        </div>
+        <p>A faith-based nonprofit dedicated to releasing children from poverty in Jesus' name through sponsorship, education, and community partnership.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="programs.html">Our Programs</a></li>
+          <li><a href="stories.html">Impact Stories</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Take Action</h4>
+        <ul>
+          <li><a href="sponsor.html">Sponsor a Child</a></li>
+          <li><a href="donate.html">Give a Gift</a></li>
+          <li><a href="get-involved.html#volunteer">Volunteer</a></li>
+          <li><a href="get-involved.html#fundraise">Fundraise</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><i class="fa-solid fa-location-dot"></i> 100 Hope Avenue, Suite 200, Springfield, USA</li>
+          <li><i class="fa-solid fa-phone"></i> (800) 555-1234</li>
+          <li><i class="fa-solid fa-envelope"></i> hello@pkchristiansponsors.org</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 PK Christian Sponsors. All rights reserved. A registered 501(c)(3) nonprofit organization.</span>
+      <span><a href="#">Privacy Policy</a> · <a href="#">Financial Accountability</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+(function () {
+  var files = [
+    '467348705_10231215033431778_2218952796522015994_n.jpg',
+    '555167526_10234980120236595_8710974760819539457_n.jpg',
+    '557612124_10235045677635489_930800816574458526_n.jpg',
+    '557721487_10235045669475285_2267989276620727781_n.jpg',
+    '561262745_10235132029994244_7229124875787738618_n.jpg',
+    '589378306_10235771843869191_8530386273423973942_n.jpg',
+    '593585728_10235902012643329_3356863374190397718_n.jpg',
+    '648292483_10237214964066294_1221621536849131195_n.jpg',
+    '658157772_10237701322144942_1816121801895911546_n.jpg',
+    '660328070_10237754782321413_5086855025857226606_n.jpg',
+    '661758375_10237769281283878_5466454677285991720_n.jpg',
+    '689475137_10238207176750991_8533489204709689737_n.jpg',
+    '690132385_10238207179671064_2365133590299000359_n.jpg',
+    '690743037_10238207176830993_1289123557709579518_n.jpg',
+    '690743312_10238207178231028_1238630617117092862_n.jpg',
+    '692203567_10238207179831068_1330099854558669657_n.jpg',
+    '752952184_10239234298108383_1488231877629323067_n.jpg',
+    '753255049_10239234299228411_2813231729281377274_n.jpg',
+    '753255105_10239234299468417_457981223818491812_n.jpg',
+    '753880991_10239234297588370_2569076863848488071_n.jpg',
+    '758951214_10239314694798250_154149551969860982_n.jpg',
+    '758964605_10239314695318263_1494585181534143848_n.jpg',
+    '760266136_10239314693558219_1917782677364901822_n.jpg',
+    '770802014_10239479531759071_4314054388754478070_n.jpg',
+    'diverse-people-in-a-seminar-2025-02-10-09-11-28-utc.jpg',
+    'grace-charity-school-redeeming-love-missions-general-2.jpg',
+    'grace-charity-school-redeeming-love-missions-teachers-cards-35.jpg'
+  ];
+
+  var grid = document.getElementById('galleryGrid');
+  grid.innerHTML = files.map(function (f, i) {
+    return '<div class="gallery-item" data-index="' + i + '"><img src="images/gallery/' + f + '" alt="Photo from Grace Charity School" loading="lazy"></div>';
+  }).join('');
+
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var currentIndex = 0;
+
+  function openAt(i) {
+    currentIndex = (i + files.length) % files.length;
+    lightboxImg.src = 'images/gallery/' + files[currentIndex];
+    lightbox.classList.add('open');
+  }
+
+  Array.prototype.slice.call(grid.querySelectorAll('.gallery-item')).forEach(function (el) {
+    el.addEventListener('click', function () { openAt(parseInt(el.dataset.index, 10)); });
+  });
+
+  document.getElementById('lightboxClose').addEventListener('click', function () { lightbox.classList.remove('open'); });
+  document.getElementById('lightboxPrev').addEventListener('click', function () { openAt(currentIndex - 1); });
+  document.getElementById('lightboxNext').addEventListener('click', function () { openAt(currentIndex + 1); });
+  lightbox.addEventListener('click', function (e) { if (e.target === lightbox) lightbox.classList.remove('open'); });
+  document.addEventListener('keydown', function (e) {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') lightbox.classList.remove('open');
+    if (e.key === 'ArrowLeft') openAt(currentIndex - 1);
+    if (e.key === 'ArrowRight') openAt(currentIndex + 1);
+  });
+})();
+</script>
+</body>
+</html>
