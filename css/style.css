@@ -215,6 +215,12 @@ header.site-header {
 @media (max-width: 760px) {
   .brand-logo { height: 64px; }
 }
+.footer-logo {
+  height: 90px;
+  width: auto;
+  display: block;
+  margin-bottom: 16px;
+}
 
 .nav-links {
   display: flex;
