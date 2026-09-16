@@ -99,15 +99,7 @@
 
     <div class="builder-layout">
       <div>
-        <div class="select-label">How much of one child's sponsorship?</div>
-        <div class="amount-grid" id="percentOptions">
-          <div class="amount-option" data-pct="25">25%<br><small style="font-weight:500;color:var(--muted);">$10/mo</small></div>
-          <div class="amount-option" data-pct="50">50%<br><small style="font-weight:500;color:var(--muted);">$20/mo</small></div>
-          <div class="amount-option" data-pct="75">75%<br><small style="font-weight:500;color:var(--muted);">$30/mo</small></div>
-          <div class="amount-option selected" data-pct="100">100%<br><small style="font-weight:500;color:var(--muted);">$40/mo</small></div>
-        </div>
-
-        <div class="select-label">How many children?</div>
+        <div class="select-label">How many children do you want to help?</div>
         <div class="amount-grid" id="qtyOptions">
           <div class="amount-option selected" data-qty="1">1 child</div>
           <div class="amount-option" data-qty="2">2 children</div>
@@ -115,6 +107,14 @@
           <div class="amount-option" data-qty="10">10 children</div>
         </div>
         <p class="form-note" style="margin-top:-4px;">Sponsoring more than 10? <a href="contact.html" style="font-weight:600;">Contact our giving team</a> — we'll set it up personally.</p>
+
+        <div class="select-label">Choose your level, per child</div>
+        <div class="amount-grid" id="percentOptions">
+          <div class="amount-option" data-pct="25">Friend<br><small style="font-weight:500;color:var(--muted);">$10/mo</small></div>
+          <div class="amount-option" data-pct="50">Supporter<br><small style="font-weight:500;color:var(--muted);">$20/mo</small></div>
+          <div class="amount-option" data-pct="75">Champion<br><small style="font-weight:500;color:var(--muted);">$30/mo</small></div>
+          <div class="amount-option selected" data-pct="100">Full Sponsor<br><small style="font-weight:500;color:var(--muted);">$40/mo</small></div>
+        </div>
       </div>
 
       <aside class="cart-summary">
@@ -147,7 +147,7 @@
           </div>
           <p class="form-note" style="margin:-6px 0 14px;"><i class="fa-solid fa-lock"></i> Card details are entered on Stripe's secure, hosted checkout page — this site never sees or stores your card number.</p>
           <p class="form-note" style="margin:-6px 0 14px;color:var(--navy);font-weight:600;"><i class="fa-solid fa-video"></i> You'll get your first video update within 6 months — your child, by name, saying thank you.</p>
-          <button type="submit" class="btn btn--gold btn--block" id="donateSubmitBtn">Give Now</button>
+          <button type="submit" class="btn btn--gold btn--block" id="donateSubmitBtn">Complete My Gift</button>
           <p class="form-note text-center" style="margin-top:12px;">PK Christian Sponsors is a registered 501(c)(3). Your gift may be tax-deductible.</p>
         </form>
       </aside>
@@ -268,6 +268,7 @@
   var pct = 100;
   var qty = 1;
   var frequency = 'monthly';
+  var tierNames = { 25: 'Friend', 50: 'Supporter', 75: 'Champion', 100: 'Full Sponsor' };
 
   function getTotal() { return Math.round(BASE * (pct / 100) * qty); }
 
@@ -276,7 +277,15 @@
     grandTotal.textContent = '$' + total;
     cartTotalUnit.textContent = frequency === 'monthly' ? '/mo' : 'one-time';
     if (mobileTotal) mobileTotal.textContent = '$' + total;
-    cartSub.textContent = pct + '% of ' + qty + (qty === 1 ? " child's" : " children's") + ' sponsorship';
+    cartSub.textContent = tierNames[pct] + ' level for ' + qty + (qty === 1 ? ' child' : ' children');
+
+    // Be honest about what happens next: only call it "done" when this
+    // button really is the last step before Stripe's payment page.
+    if ((pct * qty) > 25) {
+      submitBtn.textContent = 'Continue →';
+    } else {
+      submitBtn.textContent = 'Complete My Gift';
+    }
   }
 
   pctOptions.forEach(function (btn) {
@@ -319,7 +328,7 @@
         errorBox.textContent = err.message || 'Something went wrong. Please try again.';
         errorBox.hidden = false;
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Give Now';
+        render();
       });
   }
 
@@ -331,7 +340,7 @@
     var firstName = document.getElementById('firstName').value.trim();
     var lastName = document.getElementById('lastName').value.trim();
     var email = document.getElementById('donorEmail').value.trim();
-    var itemsLabel = pct + '% of ' + qty + ' child(ren) — Full Sponsorship';
+    var itemsLabel = tierNames[pct] + ' level — ' + qty + ' child(ren) (' + pct + '%/child)';
 
     // Donors funding more than a quarter-child's worth of sponsorship see the
     // school-repairs add-on before payment (order-bump, fully skippable there).
