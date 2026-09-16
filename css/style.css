@@ -923,6 +923,15 @@ footer.site-footer {
 .check-list { list-style: none; padding: 0; margin: 16px 0 0; }
 .check-list li { padding: 6px 0; color: var(--text); font-size: 0.95rem; }
 .check-list li::before { content: "✓ "; color: var(--success); font-weight: 700; }
+.check-list--priced li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  border-bottom: 1px dashed var(--border);
+}
+.check-list--priced li:last-child { border-bottom: none; }
+.check-list--priced .check-price { font-family: var(--font-head); font-weight: 700; color: var(--navy); flex-shrink: 0; }
 @media (max-width: 760px) {
   .sponsorship-card { flex-direction: column; }
   .sponsorship-media { flex: none; height: 200px; }
