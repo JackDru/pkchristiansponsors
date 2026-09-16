@@ -621,11 +621,13 @@ header.site-header {
 .newsletter form { display: flex; gap: 10px; flex: 1; min-width: 280px; }
 .newsletter input {
   flex: 1;
+  min-width: 0;
   padding: 13px 16px;
   border-radius: 999px;
   border: 1px solid var(--border);
   font-family: var(--font-body);
 }
+.newsletter form button { flex-shrink: 0; white-space: nowrap; }
 
 /* Team */
 .team-card { text-align: center; }
@@ -1040,6 +1042,11 @@ footer.site-footer {
   .amount-grid { grid-template-columns: repeat(2, 1fr); }
   .form-row { grid-template-columns: 1fr; }
   .cta-banner { padding: 36px 22px; }
-  .newsletter { padding: 28px; }
+  .newsletter { padding: 28px; flex-direction: column; align-items: stretch; text-align: center; }
+  .newsletter form { flex-direction: column; width: 100%; min-width: 0; }
+  .newsletter form button { width: 100%; white-space: normal; }
+  .footer-prayer form { flex-direction: column; align-items: stretch; }
+  .footer-prayer form input,
+  .footer-prayer form button { width: 100%; min-width: 0; }
   .section { padding: 60px 0; }
 }
