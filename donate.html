@@ -34,6 +34,7 @@
     <nav>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
+        <li><a href="donate.html" class="active">Donate</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="programs.html">Programs</a></li>
         <li><a href="sponsor.html">Sponsor a Child</a></li>
@@ -74,7 +75,7 @@
       <div class="value-icon"><i class="fa-solid fa-heart"></i></div>
       <div>
         <h3>Stay Connected to the Child You're Helping</h3>
-        <p>This isn't a one-way transaction — it's a relationship. Every six months, you'll receive a personal video where your child says their own name, says thank you, and shares what they've learned since your last gift. You'll see their face and hear their voice.</p>
+        <p>This isn't a one-way transaction — it's a relationship, and it's proof. Every six months, you'll receive a personal video of your sponsored child saying your name, saying thank you, and sharing what they've learned since your last gift. You don't just have to trust that your gift got there — you see it and hear it for yourself.</p>
       </div>
     </div>
 
@@ -105,9 +106,12 @@
           <div class="amount-option selected" data-qty="1">1 child</div>
           <div class="amount-option" data-qty="2">2 children</div>
           <div class="amount-option" data-qty="3">3 children</div>
+          <div class="amount-option" data-qty="5">5 children</div>
           <div class="amount-option" data-qty="10">10 children</div>
+          <div class="amount-option" data-qty="custom">Custom</div>
         </div>
-        <p class="form-note" style="margin-top:-4px;">Sponsoring more than 10? <a href="contact.html" style="font-weight:600;">Contact our giving team</a> — we'll set it up personally.</p>
+        <input type="number" id="customQty" min="1" max="500" placeholder="Enter number of children" style="display:none;margin:12px 0;padding:12px 14px;border-radius:8px;border:1px solid var(--border);width:100%;max-width:240px;font-size:1rem;">
+        <p class="form-note" style="margin-top:-4px;">Sponsor more than 5 children and Pastor Victor will personally add you to his own WhatsApp — direct access to the man on the ground, whenever you want an update. Sponsoring more than 10? <a href="contact.html" style="font-weight:600;">Contact our giving team</a> — we'll set it up personally.</p>
 
         <div class="select-label">Choose your level, per child</div>
         <div class="amount-grid" id="percentOptions">
@@ -147,7 +151,7 @@
             <input type="email" id="donorEmail" required>
           </div>
           <p class="form-note" style="margin:-6px 0 14px;"><i class="fa-solid fa-lock"></i> Card details are entered on Stripe's secure, hosted checkout page — this site never sees or stores your card number.</p>
-          <p class="form-note" style="margin:-6px 0 14px;color:var(--navy);font-weight:600;"><i class="fa-solid fa-video"></i> You'll get your first video update within 6 months — your child, by name, saying thank you.</p>
+          <p class="form-note" style="margin:-6px 0 14px;color:var(--navy);font-weight:600;"><i class="fa-solid fa-video"></i> You'll get your first video update within 6 months — your child saying your name and thank you.</p>
           <button type="submit" class="btn btn--gold btn--block" id="donateSubmitBtn">Complete My Gift</button>
           <p class="form-note text-center" style="margin-top:12px;">PK Christian Sponsors is a registered 501(c)(3). Your gift may be tax-deductible.</p>
         </form>
@@ -190,10 +194,11 @@
 <section class="section section--cream">
   <div class="container">
     <div class="cta-banner" style="background:linear-gradient(120deg,#145C8E,#1C7CB5);">
-      <h2>Other Ways to Give</h2>
-      <p style="max-width:520px;margin:0 auto 26px;">Ask about stock gifts, donor-advised funds, planned giving, and matching gifts through your employer.</p>
+      <h2>Believe in This? Bring Others In</h2>
+      <p style="max-width:520px;margin:0 auto 26px;">The fastest way to help more children is to share this with people who'd care — your church, a small group, your coworkers. We have resources to help you present it, including talking points and a short video.</p>
       <div class="btn-row" style="justify-content:center;">
-        <a href="contact.html" class="btn btn--gold">Talk to Our Giving Team</a>
+        <a href="get-involved.html#church" class="btn btn--gold">See How to Share This</a>
+        <a href="contact.html" class="btn btn--outline">Contact Us</a>
       </div>
     </div>
   </div>
@@ -210,6 +215,15 @@
         <div class="social-row">
           <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
           <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <div class="footer-prayer" style="margin-top:22px;">
+          <h4 style="margin-bottom:8px;">Join the Prayer Team</h4>
+          <form name="prayer-team" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" style="display:flex;gap:8px;flex-wrap:wrap;">
+            <input type="hidden" name="form-name" value="prayer-team">
+            <p class="hp-field"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
+            <input type="email" name="email" placeholder="Your email" required style="flex:1;min-width:160px;padding:10px 14px;border-radius:8px;border:none;font-size:0.9rem;">
+            <button type="submit" class="btn btn--gold btn--sm">Join</button>
+          </form>
         </div>
       </div>
       <div>
@@ -289,8 +303,24 @@
   pctOptions.forEach(function (btn) {
     btn.addEventListener('click', function () { pct = parseInt(btn.dataset.pct, 10); render(); });
   });
+  var customQtyInput = document.getElementById('customQty');
   qtyOptions.forEach(function (btn) {
-    btn.addEventListener('click', function () { qty = parseInt(btn.dataset.qty, 10); render(); });
+    btn.addEventListener('click', function () {
+      if (btn.dataset.qty === 'custom') {
+        customQtyInput.style.display = 'block';
+        customQtyInput.focus();
+        qty = parseInt(customQtyInput.value, 10) || 1;
+      } else {
+        customQtyInput.style.display = 'none';
+        qty = parseInt(btn.dataset.qty, 10);
+      }
+      render();
+    });
+  });
+  customQtyInput.addEventListener('input', function () {
+    var val = parseInt(customQtyInput.value, 10);
+    qty = (val && val > 0) ? Math.min(val, 500) : 1;
+    render();
   });
   freqBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {

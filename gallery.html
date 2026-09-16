@@ -87,6 +87,7 @@
     <nav>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
+        <li><a href="donate.html">Donate</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="programs.html">Programs</a></li>
         <li><a href="sponsor.html">Sponsor a Child</a></li>
@@ -149,6 +150,15 @@
         <div class="social-row">
           <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
           <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <div class="footer-prayer" style="margin-top:22px;">
+          <h4 style="margin-bottom:8px;">Join the Prayer Team</h4>
+          <form name="prayer-team" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" style="display:flex;gap:8px;flex-wrap:wrap;">
+            <input type="hidden" name="form-name" value="prayer-team">
+            <p class="hp-field"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
+            <input type="email" name="email" placeholder="Your email" required style="flex:1;min-width:160px;padding:10px 14px;border-radius:8px;border:none;font-size:0.9rem;">
+            <button type="submit" class="btn btn--gold btn--sm">Join</button>
+          </form>
         </div>
       </div>
       <div>
