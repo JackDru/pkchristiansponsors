@@ -143,12 +143,12 @@
         <div class="cart-total-row">
           <span class="cart-total-label">Total</span>
           <span id="grandTotal">$0</span>
-          <span class="cart-total-unit" id="cartTotalUnit">one-time</span>
+          <span class="cart-total-unit" id="cartTotalUnit">/mo</span>
         </div>
 
         <div class="toggle-group" style="width:100%;margin-bottom:20px;">
-          <button type="button" class="freq-btn active" data-freq="one-time" style="flex:1;">One-Time</button>
-          <button type="button" class="freq-btn" data-freq="monthly" style="flex:1;">Monthly</button>
+          <button type="button" class="freq-btn" data-freq="one-time" style="flex:1;">One-Time</button>
+          <button type="button" class="freq-btn active" data-freq="monthly" style="flex:1;">Monthly</button>
         </div>
 
         <form id="donateForm">
@@ -317,7 +317,7 @@
   };
 
   var selected = {};
-  var frequency = 'one-time';
+  var frequency = 'monthly';
   var childCount = 1;
 
   if (qtyMinus && qtyPlus) {
