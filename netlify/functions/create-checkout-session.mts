@@ -31,7 +31,7 @@ export default async (req: Request, context: Context) => {
     }), { status: 200, headers: { "Content-Type": "application/json" } });
   }
 
-  let body: { amount?: unknown; quantity?: unknown; frequency?: unknown; items?: unknown; email?: unknown; name?: unknown };
+  let body: { amount?: unknown; quantity?: unknown; frequency?: unknown; items?: unknown; email?: unknown; name?: unknown; addOnAmount?: unknown; addOnLabel?: unknown };
   try {
     body = await req.json();
   } catch {
@@ -61,6 +61,16 @@ export default async (req: Request, context: Context) => {
       headers: { "Content-Type": "application/json" },
     });
   }
+
+  const addOnAmount = Number(body.addOnAmount);
+  const hasAddOn = Number.isFinite(addOnAmount) && addOnAmount > 0;
+  if (body.addOnAmount !== undefined && !hasAddOn) {
+    return new Response(JSON.stringify({ error: "Invalid add-on amount." }), {
+      status: 400,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+  const addOnLabel = typeof body.addOnLabel === "string" ? body.addOnLabel.slice(0, 200) : "School Repairs Fund";
 
   const secretKey = Netlify.env.get("STRIPE_SECRET_KEY") || context.env?.get?.("STRIPE_SECRET_KEY") || process.env.STRIPE_SECRET_KEY;
 
@@ -103,6 +113,16 @@ export default async (req: Request, context: Context) => {
   params.set("metadata[children_sponsored]", String(quantity));
   if (name) {
     params.set("metadata[donor_name]", name);
+  }
+
+  if (hasAddOn) {
+    // Always a one-time line item, even inside a subscription-mode session
+    // (Stripe Checkout supports mixing a one-time price into a subscription).
+    params.set("line_items[1][quantity]", "1");
+    params.set("line_items[1][price_data][currency]", "usd");
+    params.set("line_items[1][price_data][unit_amount]", String(Math.round(addOnAmount * 100)));
+    params.set("line_items[1][price_data][product_data][name]", addOnLabel);
+    params.set("metadata[addon_amount]", String(addOnAmount));
   }
 
   let stripeRes: Response;

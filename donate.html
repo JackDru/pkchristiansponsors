@@ -67,8 +67,8 @@
     <div class="sample-flag" id="checkoutError" hidden style="border-color:#C0392B;background:#FDECEA;color:#7A1F1F;"></div>
 
     <span class="eyebrow">Build Your Gift</span>
-    <h2 style="margin-bottom:8px;">Choose What Your Gift Provides</h2>
-    <p class="lede">Every item below goes directly to a specific need at Grace Charity School. Tap to add it to your gift, then give.</p>
+    <h2 style="margin-bottom:8px;">Choose Your Sponsorship</h2>
+    <p class="lede">Full sponsorship covers everything one child needs. Give the whole thing, a share of it, or multiply it across several children.</p>
 
     <div class="value-callout">
       <div class="value-icon"><i class="fa-solid fa-video"></i></div>
@@ -78,71 +78,52 @@
       </div>
     </div>
 
+    <div class="sponsorship-card">
+      <div class="sponsorship-media">
+        <img src="images/gallery/690743312_10238207178231028_1238630617117092862_n.jpg" alt="A child at Grace Charity School">
+      </div>
+      <div class="sponsorship-body">
+        <span class="tag-pill">Full Sponsorship</span>
+        <div class="price">$40<span>/month, per child</span></div>
+        <p style="color:var(--muted);margin-bottom:0;">One fixed price covers everything a child needs to learn, grow, and stay safe:</p>
+        <ul class="check-list">
+          <li>Tuition &amp; School Fees</li>
+          <li>Daily Meals</li>
+          <li>Books &amp; School Supplies</li>
+          <li>Clean Water Access</li>
+          <li>Safe Housing Support</li>
+          <li>Weekly Bible Club &amp; Mentoring</li>
+        </ul>
+      </div>
+    </div>
+
     <div class="builder-layout">
-      <div class="item-grid item-grid--products" id="itemGrid">
-        <div class="item-card item-card--product selected" data-id="tuition" data-price="25" data-name="Tuition &amp; School Fees">
-          <div class="item-photo"><img src="images/gallery/690743312_10238207178231028_1238630617117092862_n.jpg" alt="Classroom at Grace Charity School — tuition and school fees"></div>
-          <div class="item-info">
-            <h3>Tuition &amp; Fees <span class="item-price">$25</span></h3>
-            <p>A full month of classroom instruction, covered.</p>
-          </div>
-          <span class="item-toggle">Added ✓</span>
+      <div>
+        <div class="select-label">How much of one child's sponsorship?</div>
+        <div class="amount-grid" id="percentOptions">
+          <div class="amount-option" data-pct="25">25%<br><small style="font-weight:500;color:var(--muted);">$10/mo</small></div>
+          <div class="amount-option" data-pct="50">50%<br><small style="font-weight:500;color:var(--muted);">$20/mo</small></div>
+          <div class="amount-option" data-pct="75">75%<br><small style="font-weight:500;color:var(--muted);">$30/mo</small></div>
+          <div class="amount-option selected" data-pct="100">100%<br><small style="font-weight:500;color:var(--muted);">$40/mo</small></div>
         </div>
-        <div class="item-card item-card--product selected" data-id="books" data-price="8" data-name="Books &amp; Learning Materials">
-          <div class="item-photo"><img src="images/gallery/grace-charity-school-redeeming-love-missions-teachers-cards-35.jpg" alt="Students with notebooks and learning materials"></div>
-          <div class="item-info">
-            <h3>Books &amp; Supplies <span class="item-price">$8</span></h3>
-            <p>Textbooks, notebooks, and pencils for a full term.</p>
-          </div>
-          <span class="item-toggle">Added ✓</span>
+
+        <div class="select-label">How many children?</div>
+        <div class="amount-grid" id="qtyOptions">
+          <div class="amount-option selected" data-qty="1">1 child</div>
+          <div class="amount-option" data-qty="2">2 children</div>
+          <div class="amount-option" data-qty="3">3 children</div>
+          <div class="amount-option" data-qty="10">10 children</div>
         </div>
-        <div class="item-card item-card--product" data-id="housing" data-price="15" data-name="Housing Support">
-          <div class="item-photo"><img src="images/gallery/grace-charity-school-redeeming-love-missions-general-2.jpg" alt="Housing conditions near Grace Charity School"></div>
-          <div class="item-info">
-            <h3>Housing <span class="item-price">$15</span></h3>
-            <p>Support toward safe, stable housing for a child's family.</p>
-          </div>
-          <span class="item-toggle">Add</span>
-        </div>
-        <div class="item-card item-card--product" data-id="food" data-price="12" data-name="Food">
-          <div class="item-photo"><img src="images/gallery/561262745_10235132029994244_7229124875787738618_n.jpg" alt="A meal provided to a child at Grace Charity School"></div>
-          <div class="item-info">
-            <h3>Food <span class="item-price">$12</span></h3>
-            <p>A month of daily meals so a child can focus on learning.</p>
-          </div>
-          <span class="item-toggle">Add</span>
-        </div>
-        <div class="item-card item-card--product" data-id="equipment" data-price="10" data-name="Equipment, Crafts &amp; Extracurriculars">
-          <div class="item-photo"><img src="images/gallery/593585728_10235902012643329_3356863374190397718_n.jpg" alt="Equipment and extracurricular activities at Grace Charity School"></div>
-          <div class="item-info">
-            <h3>Equipment &amp; Extracurriculars <span class="item-price">$10</span></h3>
-            <p>Sports gear, art supplies, and after-school activities.</p>
-          </div>
-          <span class="item-toggle">Add</span>
-        </div>
+        <p class="form-note" style="margin-top:-4px;">Sponsoring more than 10? <a href="contact.html" style="font-weight:600;">Contact our giving team</a> — we'll set it up personally.</p>
       </div>
 
       <aside class="cart-summary">
         <h3>Your Gift</h3>
-        <div class="cart-sub">Everything below goes directly to Grace Charity School — per child.</div>
-        <ul class="cart-list" id="cartList"></ul>
-        <div class="cart-total-row" style="border-top:none;padding-top:0;margin-bottom:14px;">
-          <span class="cart-total-label">Per Child</span>
-          <span id="cartTotal">$0</span>
-        </div>
-
-        <div class="quantity-row">
-          <span class="quantity-label">Sponsoring how many children?</span>
-          <div class="quantity-stepper">
-            <button type="button" id="qtyMinus" aria-label="Decrease number of children">−</button>
-            <span id="qtyValue">1</span>
-            <button type="button" id="qtyPlus" aria-label="Increase number of children">+</button>
-          </div>
-        </div>
+        <div class="cart-sub" id="cartSub">100% of 1 child's sponsorship</div>
 
         <div class="cart-total-row">
           <span class="cart-total-label">Total</span>
-          <span id="grandTotal">$0</span>
+          <span id="grandTotal">$40</span>
           <span class="cart-total-unit" id="cartTotalUnit">/mo</span>
         </div>
 
@@ -176,34 +157,11 @@
 
 <div id="mobileCartBar">
   <div class="mobile-total">
-    <strong id="mobileCartTotal">$33</strong>
+    <strong id="mobileCartTotal">$40</strong>
     <small>Your gift</small>
   </div>
   <button type="button" class="btn btn--gold btn--sm" onclick="document.getElementById('donateForm').scrollIntoView({behavior:'smooth'});">Give Now →</button>
 </div>
-
-<section class="section section--cream">
-  <div class="container" style="max-width:700px;">
-    <div class="repairs-card">
-      <span class="eyebrow">Special Project</span>
-      <h2 style="margin-bottom:8px;">Help Us Reach $5,000 for School Repairs</h2>
-      <p class="lede">The roof over two classrooms needs urgent repair before the rainy season puts lessons — and safety — at risk. Every dollar brings us closer.</p>
-      <div class="repairs-bar-track"><div class="repairs-bar-fill" id="repairsBarFill" style="width:47%;"></div></div>
-      <div class="repairs-meta">
-        <span id="repairsRaised">$2,340 raised</span>
-        <span>Goal: $5,000</span>
-      </div>
-      <div class="amount-grid" id="repairsAmountGrid" style="margin-bottom:20px;">
-        <div class="amount-option selected" data-repair-amount="25">$25</div>
-        <div class="amount-option" data-repair-amount="50">$50</div>
-        <div class="amount-option" data-repair-amount="100">$100</div>
-        <div class="amount-option" data-repair-amount="250">$250</div>
-      </div>
-      <button type="button" class="btn btn--navy btn--block" id="repairsGiveBtn">Chip In Toward Repairs</button>
-      <p class="form-note text-center" style="margin-top:12px;">Sample progress shown for design purposes — connect to your real, live total before launch.</p>
-    </div>
-  </div>
-</section>
 
 <section class="section">
   <div class="container" style="max-width:760px;">
@@ -296,105 +254,37 @@
   var form = document.getElementById('donateForm');
   if (!form) return;
 
+  var BASE = 40; // full sponsorship, per child, per month
   var submitBtn = document.getElementById('donateSubmitBtn');
   var errorBox = document.getElementById('checkoutError');
-  var cards = Array.prototype.slice.call(document.querySelectorAll('.item-card'));
-  var cartList = document.getElementById('cartList');
-  var cartTotal = document.getElementById('cartTotal');
   var grandTotal = document.getElementById('grandTotal');
   var cartTotalUnit = document.getElementById('cartTotalUnit');
+  var cartSub = document.getElementById('cartSub');
   var mobileTotal = document.getElementById('mobileCartTotal');
-  var bundleBtns = Array.prototype.slice.call(document.querySelectorAll('.bundle-btn'));
   var freqBtns = Array.prototype.slice.call(document.querySelectorAll('.freq-btn'));
-  var qtyValue = document.getElementById('qtyValue');
-  var qtyMinus = document.getElementById('qtyMinus');
-  var qtyPlus = document.getElementById('qtyPlus');
+  var pctOptions = Array.prototype.slice.call(document.querySelectorAll('#percentOptions .amount-option'));
+  var qtyOptions = Array.prototype.slice.call(document.querySelectorAll('#qtyOptions .amount-option'));
 
-  var bundles = {
-    starter: ['supplies', 'hygiene', 'water', 'books', 'mentoring'],
-    full: ['supplies', 'hygiene', 'water', 'books', 'mentoring', 'uniform', 'health', 'tutoring', 'meals'],
-    complete: ['supplies', 'hygiene', 'faith', 'reading', 'water', 'books', 'mentoring', 'uniform', 'health', 'tutoring', 'meals', 'housing', 'tuition']
-  };
-
-  var selected = {};
+  var pct = 100;
+  var qty = 1;
   var frequency = 'monthly';
-  var childCount = 1;
 
-  if (qtyMinus && qtyPlus) {
-    qtyMinus.addEventListener('click', function () {
-      if (childCount > 1) { childCount--; qtyValue.textContent = childCount; render(); }
-    });
-    qtyPlus.addEventListener('click', function () {
-      if (childCount < 20) { childCount++; qtyValue.textContent = childCount; render(); }
-    });
-  }
-
-  function cardById(id) { return cards.filter(function (c) { return c.dataset.id === id; })[0]; }
-
-  function setCardState(card, isSelected) {
-    var toggle = card.querySelector('.item-toggle');
-    if (isSelected) { card.classList.add('selected'); toggle.textContent = 'Added ✓'; }
-    else { card.classList.remove('selected'); toggle.textContent = 'Add'; }
-  }
-
-  function toggleItem(id) {
-    var card = cardById(id);
-    if (!card) return;
-    if (selected[id]) { delete selected[id]; setCardState(card, false); }
-    else { selected[id] = { name: card.dataset.name, price: parseFloat(card.dataset.price) }; setCardState(card, true); }
-    bundleBtns.forEach(function (b) { b.classList.remove('active'); });
-    render();
-  }
-
-  function applyBundle(name) {
-    Object.keys(selected).forEach(function (id) { delete selected[id]; });
-    cards.forEach(function (c) { setCardState(c, false); });
-    bundles[name].forEach(function (id) {
-      var card = cardById(id);
-      if (card) { selected[id] = { name: card.dataset.name, price: parseFloat(card.dataset.price) }; setCardState(card, true); }
-    });
-    render();
-  }
+  function getTotal() { return Math.round(BASE * (pct / 100) * qty); }
 
   function render() {
-    var ids = Object.keys(selected);
-    if (ids.length === 0) {
-      cartList.innerHTML = '<li class="cart-empty">Nothing selected yet — tap an item to begin.</li>';
-    } else {
-      cartList.innerHTML = ids.map(function (id) {
-        var it = selected[id];
-        return '<li><span>' + it.name + '</span><span class="cart-line">$' + it.price +
-          '<button type="button" class="cart-remove" data-id="' + id + '" aria-label="Remove ' + it.name + '">&times;</button></span></li>';
-      }).join('');
-      Array.prototype.slice.call(cartList.querySelectorAll('.cart-remove')).forEach(function (btn) {
-        btn.addEventListener('click', function () { toggleItem(btn.dataset.id); });
-      });
-    }
-    var perChild = ids.reduce(function (sum, id) { return sum + selected[id].price; }, 0);
-    var total = perChild * childCount;
-    cartTotal.textContent = '$' + perChild;
+    var total = getTotal();
     grandTotal.textContent = '$' + total;
     cartTotalUnit.textContent = frequency === 'monthly' ? '/mo' : 'one-time';
     if (mobileTotal) mobileTotal.textContent = '$' + total;
+    cartSub.textContent = pct + '% of ' + qty + (qty === 1 ? " child's" : " children's") + ' sponsorship';
   }
 
-  cards.forEach(function (card) {
-    card.addEventListener('click', function () { toggleItem(card.dataset.id); });
-    card.setAttribute('tabindex', '0');
-    card.setAttribute('role', 'checkbox');
-    card.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleItem(card.dataset.id); }
-    });
+  pctOptions.forEach(function (btn) {
+    btn.addEventListener('click', function () { pct = parseInt(btn.dataset.pct, 10); render(); });
   });
-
-  bundleBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      applyBundle(btn.dataset.bundle);
-      bundleBtns.forEach(function (b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-    });
+  qtyOptions.forEach(function (btn) {
+    btn.addEventListener('click', function () { qty = parseInt(btn.dataset.qty, 10); render(); });
   });
-
   freqBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
       frequency = btn.dataset.freq;
@@ -404,60 +294,26 @@
     });
   });
 
-  cards.forEach(function (card) {
-    if (card.classList.contains('selected')) {
-      selected[card.dataset.id] = { name: card.dataset.name, price: parseFloat(card.dataset.price) };
-    }
-  });
   render();
 
-  function getItemsSummary() {
-    return Object.keys(selected).map(function (id) { return selected[id].name; }).join(', ');
-  }
-
-  function getTotal() {
-    return Object.keys(selected).reduce(function (sum, id) { return sum + selected[id].price; }, 0);
-  }
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    errorBox.hidden = true;
-
-    var amount = getTotal();
-    if (!amount || amount < 1) {
-      errorBox.textContent = 'Please select at least one item for your gift.';
-      errorBox.hidden = false;
-      return;
-    }
-
-    var firstName = document.getElementById('firstName').value.trim();
-    var lastName = document.getElementById('lastName').value.trim();
-    var email = document.getElementById('donorEmail').value.trim();
-
+  function submitToCheckout(amount, freq, firstName, lastName, email, itemsLabel) {
     submitBtn.disabled = true;
     submitBtn.textContent = 'Redirecting to secure checkout…';
-
     fetch('/api/create-checkout-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         amount: amount,
-        quantity: childCount,
-        frequency: frequency,
+        frequency: freq,
         email: email,
         name: (firstName + ' ' + lastName).trim(),
-        items: getItemsSummary() + (childCount > 1 ? ' — sponsoring ' + childCount + ' children' : '')
+        items: itemsLabel
       })
     })
-      .then(function (res) {
-        return res.json().then(function (data) { return { ok: res.ok, data: data }; });
-      })
+      .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
       .then(function (result) {
-        if (result.ok && result.data.url) {
-          window.location.href = result.data.url;
-        } else {
-          throw new Error((result.data && result.data.error) || 'Something went wrong. Please try again.');
-        }
+        if (result.ok && result.data.url) { window.location.href = result.data.url; }
+        else { throw new Error((result.data && result.data.error) || 'Something went wrong. Please try again.'); }
       })
       .catch(function (err) {
         errorBox.textContent = err.message || 'Something went wrong. Please try again.';
@@ -465,37 +321,33 @@
         submitBtn.disabled = false;
         submitBtn.textContent = 'Give Now';
       });
-  });
-
-  // School repairs crowdfund — quick one-time contribution, separate from the main gift builder
-  var repairsBtn = document.getElementById('repairsGiveBtn');
-  if (repairsBtn) {
-    repairsBtn.addEventListener('click', function () {
-      var selectedAmt = document.querySelector('#repairsAmountGrid .amount-option.selected');
-      var amount = selectedAmt ? parseFloat(selectedAmt.dataset.repairAmount) : 25;
-      repairsBtn.disabled = true;
-      repairsBtn.textContent = 'Redirecting to secure checkout…';
-      fetch('/api/create-checkout-session', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          amount: amount,
-          frequency: 'one-time',
-          items: 'School Repairs Fund contribution'
-        })
-      })
-        .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
-        .then(function (result) {
-          if (result.ok && result.data.url) { window.location.href = result.data.url; }
-          else { throw new Error((result.data && result.data.error) || 'Something went wrong. Please try again.'); }
-        })
-        .catch(function (err) {
-          alert(err.message || 'Something went wrong. Please try again.');
-          repairsBtn.disabled = false;
-          repairsBtn.textContent = 'Chip In Toward Repairs';
-        });
-    });
   }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    errorBox.hidden = true;
+
+    var amount = getTotal();
+    var firstName = document.getElementById('firstName').value.trim();
+    var lastName = document.getElementById('lastName').value.trim();
+    var email = document.getElementById('donorEmail').value.trim();
+    var itemsLabel = pct + '% of ' + qty + ' child(ren) — Full Sponsorship';
+
+    // Donors funding more than a quarter-child's worth of sponsorship see the
+    // school-repairs add-on before payment (order-bump, fully skippable there).
+    var qualifiesForUpsell = (pct * qty) > 25;
+
+    if (qualifiesForUpsell) {
+      sessionStorage.setItem('pkDonationDraft', JSON.stringify({
+        amount: amount, frequency: frequency, firstName: firstName, lastName: lastName,
+        email: email, itemsLabel: itemsLabel
+      }));
+      window.location.href = 'add-repairs.html';
+      return;
+    }
+
+    submitToCheckout(amount, frequency, firstName, lastName, email, itemsLabel);
+  });
 })();
 </script>
 </body>

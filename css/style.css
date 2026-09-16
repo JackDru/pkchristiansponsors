@@ -904,6 +904,39 @@ footer.site-footer {
 .repairs-bar-fill { background: linear-gradient(90deg, var(--gold), var(--gold-dark)); height: 100%; border-radius: 999px; }
 .repairs-meta { display: flex; justify-content: space-between; font-weight: 600; color: var(--navy); margin-bottom: 26px; font-size: 0.95rem; }
 
+/* Full-sponsorship value-stack card */
+.sponsorship-card {
+  display: flex;
+  gap: 28px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+.sponsorship-media { flex: 0 0 42%; min-height: 260px; }
+.sponsorship-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.sponsorship-body { padding: 28px 30px 28px 0; flex: 1; }
+.sponsorship-body .price { font-family: var(--font-head); font-size: 2.4rem; font-weight: 700; color: var(--navy); margin: 6px 0 4px; }
+.sponsorship-body .price span { font-size: 1rem; font-weight: 500; color: var(--muted); }
+.check-list { list-style: none; padding: 0; margin: 16px 0 0; }
+.check-list li { padding: 6px 0; color: var(--text); font-size: 0.95rem; }
+.check-list li::before { content: "✓ "; color: var(--success); font-weight: 700; }
+@media (max-width: 760px) {
+  .sponsorship-card { flex-direction: column; }
+  .sponsorship-media { flex: none; height: 200px; }
+  .sponsorship-body { padding: 22px; }
+}
+
+.select-label {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--navy);
+  margin: 22px 0 10px;
+}
+
 /* Sponsor multiple children — quantity stepper */
 .quantity-row {
   display: flex;

@@ -10,13 +10,16 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Donation amount picker (donate page)
+  // Donation amount picker (donate page) — scoped per .amount-grid so multiple
+  // independent groups (e.g. tuition %, child quantity, repairs amount) can
+  // coexist on the same page without clearing each other's selection.
   var amountOptions = document.querySelectorAll('.amount-option');
   amountOptions.forEach(function (opt) {
     opt.addEventListener('click', function () {
-      amountOptions.forEach(function (o) { o.classList.remove('selected'); });
+      var group = opt.closest('.amount-grid') || document;
+      group.querySelectorAll('.amount-option').forEach(function (o) { o.classList.remove('selected'); });
       opt.classList.add('selected');
-      var customInput = document.querySelector('#customAmount');
+      var customInput = group.querySelector('#customAmount');
       if (customInput && opt.dataset.amount !== 'custom') {
         customInput.value = '';
       }
