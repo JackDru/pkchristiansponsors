@@ -17,7 +17,7 @@
   <div class="container">
     <div class="topbar-links">
       <a href="tel:+18005551234"><i class="fa-solid fa-phone"></i> (800) 555-1234</a>
-      <a href="mailto:hello@pkchristiansponsors.org"><i class="fa-solid fa-envelope"></i> hello@pkchristiansponsors.org</a>
+      <a href="mailto:pkchristiansponsors@gmail.com"><i class="fa-solid fa-envelope"></i> pkchristiansponsors@gmail.com</a>
     </div>
     <div class="topbar-links">
       <a href="contact.html">Contact</a>
@@ -73,8 +73,8 @@
     <div class="value-callout">
       <div class="value-icon"><i class="fa-solid fa-video"></i></div>
       <div>
-        <h3>Included with every gift — twice a year</h3>
-        <p>A personal video check-in from your child: a real "thank you," in their own words, plus what they've learned since your last gift. You're not giving to an abyss — you're getting to know a real kid.</p>
+        <h3>Every 6 months, you get a video — not just a receipt</h3>
+        <p>Your child says their own name, says thank you, and tells you what they've learned since your last gift. You'll see their face and hear their voice. This isn't money into the void — it's a real relationship with a real child.</p>
       </div>
     </div>
 
@@ -124,11 +124,25 @@
 
       <aside class="cart-summary">
         <h3>Your Gift</h3>
-        <div class="cart-sub">Everything below goes directly to Grace Charity School.</div>
+        <div class="cart-sub">Everything below goes directly to Grace Charity School — per child.</div>
         <ul class="cart-list" id="cartList"></ul>
+        <div class="cart-total-row" style="border-top:none;padding-top:0;margin-bottom:14px;">
+          <span class="cart-total-label">Per Child</span>
+          <span id="cartTotal">$0</span>
+        </div>
+
+        <div class="quantity-row">
+          <span class="quantity-label">Sponsoring how many children?</span>
+          <div class="quantity-stepper">
+            <button type="button" id="qtyMinus" aria-label="Decrease number of children">−</button>
+            <span id="qtyValue">1</span>
+            <button type="button" id="qtyPlus" aria-label="Increase number of children">+</button>
+          </div>
+        </div>
+
         <div class="cart-total-row">
           <span class="cart-total-label">Total</span>
-          <span id="cartTotal">$0</span>
+          <span id="grandTotal">$0</span>
           <span class="cart-total-unit" id="cartTotalUnit">one-time</span>
         </div>
 
@@ -151,6 +165,7 @@
             <input type="email" id="donorEmail" required>
           </div>
           <p class="form-note" style="margin:-6px 0 14px;"><i class="fa-solid fa-lock"></i> Card details are entered on Stripe's secure, hosted checkout page — this site never sees or stores your card number.</p>
+          <p class="form-note" style="margin:-6px 0 14px;color:var(--navy);font-weight:600;"><i class="fa-solid fa-video"></i> You'll get your first video update within 6 months — your child, by name, saying thank you.</p>
           <button type="submit" class="btn btn--gold btn--block" id="donateSubmitBtn">Give Now</button>
           <p class="form-note text-center" style="margin-top:12px;">PK Christian Sponsors is a registered 501(c)(3). Your gift may be tax-deductible.</p>
         </form>
@@ -264,7 +279,7 @@
         <ul>
           <li><i class="fa-solid fa-location-dot"></i> 100 Hope Avenue, Suite 200, Springfield, USA</li>
           <li><i class="fa-solid fa-phone"></i> (800) 555-1234</li>
-          <li><i class="fa-solid fa-envelope"></i> hello@pkchristiansponsors.org</li>
+          <li><i class="fa-solid fa-envelope"></i> pkchristiansponsors@gmail.com</li>
         </ul>
       </div>
     </div>
@@ -286,10 +301,14 @@
   var cards = Array.prototype.slice.call(document.querySelectorAll('.item-card'));
   var cartList = document.getElementById('cartList');
   var cartTotal = document.getElementById('cartTotal');
+  var grandTotal = document.getElementById('grandTotal');
   var cartTotalUnit = document.getElementById('cartTotalUnit');
   var mobileTotal = document.getElementById('mobileCartTotal');
   var bundleBtns = Array.prototype.slice.call(document.querySelectorAll('.bundle-btn'));
   var freqBtns = Array.prototype.slice.call(document.querySelectorAll('.freq-btn'));
+  var qtyValue = document.getElementById('qtyValue');
+  var qtyMinus = document.getElementById('qtyMinus');
+  var qtyPlus = document.getElementById('qtyPlus');
 
   var bundles = {
     starter: ['supplies', 'hygiene', 'water', 'books', 'mentoring'],
@@ -299,6 +318,16 @@
 
   var selected = {};
   var frequency = 'one-time';
+  var childCount = 1;
+
+  if (qtyMinus && qtyPlus) {
+    qtyMinus.addEventListener('click', function () {
+      if (childCount > 1) { childCount--; qtyValue.textContent = childCount; render(); }
+    });
+    qtyPlus.addEventListener('click', function () {
+      if (childCount < 20) { childCount++; qtyValue.textContent = childCount; render(); }
+    });
+  }
 
   function cardById(id) { return cards.filter(function (c) { return c.dataset.id === id; })[0]; }
 
@@ -341,8 +370,10 @@
         btn.addEventListener('click', function () { toggleItem(btn.dataset.id); });
       });
     }
-    var total = ids.reduce(function (sum, id) { return sum + selected[id].price; }, 0);
-    cartTotal.textContent = '$' + total;
+    var perChild = ids.reduce(function (sum, id) { return sum + selected[id].price; }, 0);
+    var total = perChild * childCount;
+    cartTotal.textContent = '$' + perChild;
+    grandTotal.textContent = '$' + total;
     cartTotalUnit.textContent = frequency === 'monthly' ? '/mo' : 'one-time';
     if (mobileTotal) mobileTotal.textContent = '$' + total;
   }
@@ -411,10 +442,11 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         amount: amount,
+        quantity: childCount,
         frequency: frequency,
         email: email,
         name: (firstName + ' ' + lastName).trim(),
-        items: getItemsSummary()
+        items: getItemsSummary() + (childCount > 1 ? ' — sponsoring ' + childCount + ' children' : '')
       })
     })
       .then(function (res) {

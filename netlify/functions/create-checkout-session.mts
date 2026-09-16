@@ -31,7 +31,7 @@ export default async (req: Request, context: Context) => {
     }), { status: 200, headers: { "Content-Type": "application/json" } });
   }
 
-  let body: { amount?: unknown; frequency?: unknown; items?: unknown; email?: unknown; name?: unknown };
+  let body: { amount?: unknown; quantity?: unknown; frequency?: unknown; items?: unknown; email?: unknown; name?: unknown };
   try {
     body = await req.json();
   } catch {
@@ -42,6 +42,7 @@ export default async (req: Request, context: Context) => {
   }
 
   const amount = Number(body.amount);
+  const quantity = Math.round(Number(body.quantity) || 1);
   const isMonthly = body.frequency === "monthly";
   const items = typeof body.items === "string" ? body.items.slice(0, 300) : "";
   const email = typeof body.email === "string" ? body.email.slice(0, 320) : "";
@@ -49,6 +50,13 @@ export default async (req: Request, context: Context) => {
 
   if (!Number.isFinite(amount) || amount < 1 || amount > 100000) {
     return new Response(JSON.stringify({ error: "Please enter an amount between $1 and $100,000." }), {
+      status: 400,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
+  if (!Number.isFinite(quantity) || quantity < 1 || quantity > 20) {
+    return new Response(JSON.stringify({ error: "Please choose between 1 and 20 children to sponsor." }), {
       status: 400,
       headers: { "Content-Type": "application/json" },
     });
@@ -66,14 +74,14 @@ export default async (req: Request, context: Context) => {
   const siteUrl = Netlify.env.get("URL") || new URL(req.url).origin;
   const unitAmountCents = Math.round(amount * 100);
   const productName = isMonthly
-    ? "PK Christian Sponsors — Monthly Sponsorship"
-    : "PK Christian Sponsors — One-Time Gift";
+    ? `PK Christian Sponsors — Monthly Sponsorship${quantity > 1 ? ` (${quantity} children)` : ""}`
+    : `PK Christian Sponsors — One-Time Gift${quantity > 1 ? ` (${quantity} children)` : ""}`;
 
   const params = new URLSearchParams();
   params.set("mode", isMonthly ? "subscription" : "payment");
-  params.set("success_url", `${siteUrl}/thank-you.html?donated=1&amount=${encodeURIComponent(String(amount))}`);
+  params.set("success_url", `${siteUrl}/thank-you.html?donated=1&amount=${encodeURIComponent(String(amount * quantity))}`);
   params.set("cancel_url", `${siteUrl}/donate.html`);
-  params.set("line_items[0][quantity]", "1");
+  params.set("line_items[0][quantity]", String(quantity));
   params.set("line_items[0][price_data][currency]", "usd");
   params.set("line_items[0][price_data][unit_amount]", String(unitAmountCents));
   params.set("line_items[0][price_data][product_data][name]", productName);
@@ -92,6 +100,7 @@ export default async (req: Request, context: Context) => {
   if (items) {
     params.set("metadata[items]", items);
   }
+  params.set("metadata[children_sponsored]", String(quantity));
   if (name) {
     params.set("metadata[donor_name]", name);
   }
