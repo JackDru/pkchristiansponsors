@@ -10,8 +10,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="css/style.css">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '28397138999896163');
+fbq('track', 'PageView');
+</script>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=28397138999896163&ev=PageView&noscript=1"
+/></noscript>
 
 <div class="topbar">
   <div class="container">
@@ -156,6 +173,16 @@
           <button type="submit" class="btn btn--gold btn--block" id="donateSubmitBtn">Complete My Gift</button>
           <p class="form-note text-center" style="margin-top:12px;">PK Christian Sponsors is a registered 501(c)(3). Your gift may be tax-deductible.</p>
         </form>
+
+        <div class="countdown-inline">
+          <p class="countdown-inline-label"><i class="fa-solid fa-hourglass-half"></i> First day of class: October 1</p>
+          <div class="countdown-timer" id="schoolCountdown">
+            <div class="countdown-unit"><span class="countdown-num" id="cdDays">00</span><span class="countdown-label">Days</span></div>
+            <div class="countdown-unit"><span class="countdown-num" id="cdHours">00</span><span class="countdown-label">Hrs</span></div>
+            <div class="countdown-unit"><span class="countdown-num" id="cdMins">00</span><span class="countdown-label">Min</span></div>
+            <div class="countdown-unit"><span class="countdown-num" id="cdSecs">00</span><span class="countdown-label">Sec</span></div>
+          </div>
+        </div>
       </aside>
     </div>
   </div>
@@ -262,6 +289,33 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+(function () {
+  var target = new Date('2026-10-01T00:00:00');
+  var elD = document.getElementById('cdDays');
+  var elH = document.getElementById('cdHours');
+  var elM = document.getElementById('cdMins');
+  var elS = document.getElementById('cdSecs');
+  if (!elD) return;
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function tick() {
+    var diff = target - new Date();
+    if (diff <= 0) {
+      elD.textContent = elH.textContent = elM.textContent = elS.textContent = '00';
+      return;
+    }
+    elD.textContent = pad(Math.floor(diff / 86400000));
+    elH.textContent = pad(Math.floor((diff % 86400000) / 3600000));
+    elM.textContent = pad(Math.floor((diff % 3600000) / 60000));
+    elS.textContent = pad(Math.floor((diff % 60000) / 1000));
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
 <script>
 (function () {
   var form = document.getElementById('donateForm');

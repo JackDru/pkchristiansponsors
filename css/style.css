@@ -1005,6 +1005,32 @@ footer.site-footer {
 .order-summary .order-summary-items { color: var(--muted); font-size: 0.92rem; margin-bottom: 10px; }
 .order-summary-total-row { font-family: var(--font-head); font-weight: 700; color: var(--navy); }
 
+/* Countdown, inline in the checkout sidebar */
+.countdown-inline {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px dashed var(--border);
+  text-align: center;
+}
+.countdown-inline-label {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+.countdown-inline-label i { color: var(--gold-dark); margin-right: 4px; }
+.countdown-timer { display: flex; justify-content: center; gap: 8px; }
+.countdown-unit {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 6px;
+  text-align: center;
+  min-width: 52px;
+}
+.countdown-num { display: block; font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; line-height: 1; color: var(--navy); }
+.countdown-label { display: block; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-top: 4px; }
+
 /* ==========================================================================
    Responsive
    ========================================================================== */
